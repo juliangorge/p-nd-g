@@ -27,7 +27,7 @@ void selectedOption(Andypolis& City, int answer){
             City.newBuildingByName();
             break;
         case 2:
-            // Mostrar edificios "CONSTRUIDOS" y sus coordenadas
+            // Mostrar edificios CONSTRUIDOS a partir del archivo ubicaciones.txt y sus coordenadas
             City.showBuiltBuildings();
             break;
         case 3:

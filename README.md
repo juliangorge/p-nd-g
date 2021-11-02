@@ -3,10 +3,7 @@
 + Herencia para Materiales.
 + Polimorfismo para Edificios.
 
-
-
-
-
+//
 
 void Andypolis::cargarTerrenos(fila, columna, terreno)
 {
