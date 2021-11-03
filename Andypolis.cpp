@@ -43,49 +43,44 @@ void Andypolis:: showBuildings(){
     cout << "======================" << endl << endl;
 }
 
-bool Andypolis:: newBuilding(){
+void Andypolis:: newBuilding(){
     string name, confirm;
     int pos;
 
-    pos = checkIfBuildingExistsByName();
-    if(pos == -1) return false;
+    if((pos = checkIfBuildingExistsByName()) == -1) return;
 
-    if(!checkByMaterials(pos) || !checkByMax(pos)) return false;
+    if(!checkByMaterials(pos) || !checkByMax(pos)) return;
 
     cout << "Escribe `Y` para confirmar: ";
     cin >> confirm;
 
-    if(confirm == "Y"){
+    if(confirm == "Y" || confirm == "y"){
         this->buildings[pos]->increaseQuantity();
         decreaseMaterials(pos);
         cout << "Confirmado" << endl;
     }else{
         cout << "Cancelado" << endl;
     }
-
-    return (confirm == "Y");
 }
 
-bool Andypolis:: deleteBuilding(){
+void Andypolis:: deleteBuilding(){
     string name, confirm;
     int pos;
 
-    pos = checkIfBuildingExistsByName();
-    if(pos == -1) return false;
+    if((pos = checkIfBuildingExistsByName()) == -1) return;
+
+    if(!checkByMin(pos)) return;
 
     cout << "Escribe `Y` para confirmar: ";
     cin >> confirm;
 
-    if(confirm == "Y"){
+    if(confirm == "Y" || confirm == "y"){
         this->buildings[pos]->decreaseQuantity();
-        this->building_quantity--;
         increaseMaterials(pos);
         cout << "Confirmado" << endl;        
     }else{
         cout << "Cancelado" << endl;
     }
-
-    return (confirm == "Y");
 }
 
 int Andypolis:: checkIfBuildingExistsByName(){
@@ -131,6 +126,13 @@ bool Andypolis:: checkByMax(int pos){
     bool condition = (this->buildings[pos]->getQuantity() < this->buildings[pos]->getMax());
 
     if(!condition) cout << "ATENCION: Se alcanzo el maximo para esta construccion" << endl;
+    return condition;
+}
+
+bool Andypolis:: checkByMin(int pos){
+    bool condition = (this->buildings[pos]->getQuantity()!=0);
+
+    if(!condition) cout << "ATENCION: No hay edificios construidos de este tipo" << endl;
     return condition;
 }
 
@@ -201,7 +203,7 @@ void Andypolis:: processBuildingsFile(string filename){
         addBuilding(new Building(name, stone, wood, iron, quantity, max));
    }
 
-    file.close();
+	file.close();
 }
 
 void Andypolis:: processMaterialsFile(string filename){
@@ -213,7 +215,7 @@ void Andypolis:: processMaterialsFile(string filename){
         addMaterial(new Material(name, quantity));
     }
 
-    file.close();
+	file.close();
 }
 
 int Andypolis:: getBuildingQuantity(){
@@ -246,7 +248,7 @@ void Andypolis:: saveBuildingsChanges(string filename){
     }
 
     delete [] this->buildings;
-    file.close();
+	file.close();
 }
 
 void Andypolis:: saveMaterialsChanges(string filename){
@@ -258,7 +260,7 @@ void Andypolis:: saveMaterialsChanges(string filename){
     }
 
     delete [] this->materials;
-    file.close();
+	file.close();
 }
 
 Andypolis:: ~Andypolis(){

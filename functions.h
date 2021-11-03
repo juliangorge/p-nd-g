@@ -7,8 +7,11 @@
 // POST: Imprime el menu en pantalla.
 void showMenu();
 
-// PRE: Recibe la Ciudad y el valor ingresado por consola.
-// POST: Retorna TRUE si la opcion fue valida y llama a la funcion acorde a la opcion seleccionada.
+// PRE: La opcion debe haber sido validada.
+// POST: Genera alguna de las acciones del menu en base a la opcion elegida.
 void selectedOption(Andypolis& City, int answer);
 
+// PRE: 
+// POST: Retorna una opcion validada del menu
+int get_option();
 #endif

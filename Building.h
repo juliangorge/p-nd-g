@@ -1,37 +1,53 @@
-#ifndef Material_INCLUDED
-#define Material_INCLUDED
+#ifndef Building_INCLUDED
+#define Building_INCLUDED
 
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-class Material {
+class Building {
 
     // Attributes
     private:
         string name;
+        int stone;
+        int wood;
+        int iron;
         int quantity;
+        int max;
 
     // Methods
     public:
-
+    
         // PRE: Los parametros deben ser validos.
-	    // POST: Crea un objeto Material.
-        Material(string name, int quantity);
+	    // POST: Crea un objeto Building.
+        Building(string name, int stone, int wood, int iron, int quantity, int max);
+        
+        // PRE:
+        // POST: Destruye un objeto Building.
+        ~Building();
 
         // PRE:
-        // POST: Destruye un objeto Material.
-        ~Material();
-
-        // PRE:
-        // POST: Retorna el nombre
+        // POST: Retorna el nombre.
         string getName();
 
         // PRE:
-        // POST: Retorna la cantidad
+        // POST: Retorna la cantidad de piedra.
+        int getStone();
+
+        // PRE:
+        // POST: Retorna la cantidad de madera.
+        int getWood();
+
+        // PRE:
+        // POST: Retorna la cantidad de metal.
+        int getIron();
+
+        // PRE:
+        // POST: Retorna la cantidad de edificios construidos.
         int getQuantity();
-        
+
         // PRE:
         // POST: Suma una unidad a la cantidad
         void increaseQuantity();
@@ -47,6 +63,10 @@ class Material {
         // PRE: Recibe un valor entero
         // POST: Resta el valor ingresado a la cantidad previa
         void decreaseQuantity(int quantity);
+
+        // PRE:
+        // POST: Retorna la cantidad maxima de edificios.
+        int getMax();
 };
 
 #endif

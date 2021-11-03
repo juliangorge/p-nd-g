@@ -42,11 +42,11 @@ class Andypolis {
 
         // PRE:
         // POST: Consulta el edificio por nombre y incrementa en 1 unidad.
-        bool newBuilding();
+        void newBuilding();
 
         // PRE:
         // POST: Consulta el edificio por nombre y disminuye en 1 unidad.
-        bool deleteBuilding();
+        void deleteBuilding();
 
         // PRE:
         // POST: Consulta por pantalla el nombre del Edificio y si existe retorna su posicion, de lo contrario -1.
@@ -59,6 +59,10 @@ class Andypolis {
         // PRE: Recibe una posicion valida.
         // POST: Retorna TRUE si el Edificio puede construirse en base al maximo permitido.
         bool checkByMax(int pos);
+
+        // PRE: Recibe una posicion valida.
+        // POST: Retorna TRUE si hay al menos un Edificio construido
+        bool checkByMin(int pos);
 
         // PRE: Recibe una posicion valida.
         // POST: Disminuye la cantidad de materiales en base a los materiales del Edificio de la posicion ingresada.
