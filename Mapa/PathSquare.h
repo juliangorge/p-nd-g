@@ -6,6 +6,7 @@ class PathSquare : public Square
 {
     public:
         PathSquare();
+        ~PathSquare();
         char getTypeSquare();
 };
 

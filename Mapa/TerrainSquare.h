@@ -6,6 +6,7 @@ class TerrainSquare : public Square
 {
     public:
         TerrainSquare();
+        ~TerrainSquare();
         char getTypeSquare();
 };
 

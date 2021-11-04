@@ -9,3 +9,5 @@ char PathSquare::getTypeSquare()
   return this->square_type;
 }
 
+PathSquare:: ~PathSquare(){
+}

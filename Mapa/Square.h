@@ -11,6 +11,7 @@ class Square
 
     public:
         Square(){};
+        virtual ~Square() {};
         virtual char getTypeSquare() = 0;
 };
 

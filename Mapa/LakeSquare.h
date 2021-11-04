@@ -6,6 +6,7 @@ class LakeSquare : public Square
 {
     public:
         LakeSquare();
+        ~LakeSquare();
         char getTypeSquare();
 };
 

@@ -9,3 +9,5 @@ char LakeSquare::getTypeSquare()
 	return this->square_type;
 }
 
+LakeSquare:: ~LakeSquare(){
+}
