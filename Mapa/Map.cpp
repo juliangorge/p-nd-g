@@ -27,25 +27,26 @@ void Map::readMap()
     }
 
     file >> this->rows >> this->columns;
-    //this->createMap(this->rows,this->columns);
+
+    this->squares = new Square**[this->rows];
 
     for (unsigned int row_pos = 0; row_pos < this->rows; row_pos++)
     {
+
+        this->squares[row_pos] = new Square*[this->columns];
+
         for (unsigned int col_pos = 0; col_pos < this->columns; col_pos++)
         {
+
             file >> square_type;
             this->loadMap(row_pos,col_pos,square_type);
+
         }
     }
 
     file.close();
 
 }
-
-/*void Map::createMap(unsigned int rows, bool rows)
-{
-    this->
-}*/
 
 void Map::loadMap(unsigned int row_pos, unsigned int col_pos, char square_type)
 {
@@ -62,9 +63,6 @@ void Map::loadMap(unsigned int row_pos, unsigned int col_pos, char square_type)
         case 'L':
             this->squares[row_pos][col_pos] = new LakeSquare();
     }
-
-    //this->vehiculos[cantidadDeVehiculos]->verificarTelepase(telepase); //Aca esta el polimorfismo
-
 }
 
 void Map::showMap()
@@ -75,7 +73,7 @@ void Map::showMap()
     {
         for (unsigned int j = 0; j < this->columns; j++)
         {
-            cout<< this->squares[0][j]->getTypeSquare()<< " ";
+            cout<< this->squares[0][j]->getTypeSquare() << " ";
         }
         cout << endl;
     }

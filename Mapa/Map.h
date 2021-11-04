@@ -12,7 +12,8 @@ class Map
     private:
         unsigned int rows;
         unsigned int columns;
-        Square*** squares;
+        Square*** squares; // nullptr [Square*, Square* ... ][Square*, Square*, ... ]
+        //Square* squares[10][10];
     public:
         Map();
         void readMap();
