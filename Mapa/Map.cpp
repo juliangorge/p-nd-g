@@ -73,7 +73,7 @@ void Map::showMap()
     {
         for (unsigned int j = 0; j < this->columns; j++)
         {
-            cout<< this->squares[0][j]->getTypeSquare() << " ";
+            cout << this->squares[i][j]->getTypeSquare() << " ";
         }
         cout << endl;
     }
