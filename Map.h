@@ -6,6 +6,9 @@
 #include "PathSquare.h"
 #include "TerrainSquare.h"
 #include "LakeSquare.h"
+#include <string>
+
+using namespace std;
 
 class Map
 {
@@ -16,12 +19,13 @@ class Map
 
     public:
         Map();
+        ~Map();
         void readMap();
         void loadMap(unsigned int rows, unsigned int columns, char square_type);
         bool canItBeBuildable(unsigned int & row_pos, unsigned int & column_pos);
         void showMap();
         void showCoord(unsigned int row_pos, unsigned int col_pos);
-        void flushMemory();
+        void saveChanges(string filename_map, string filename_locations);
 };
 
 

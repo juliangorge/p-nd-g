@@ -10,8 +10,8 @@ class TerrainSquare : public Square
         char getTypeSquare();
         unsigned int showRow();
 		unsigned int showColumn();
-		bool checkSquareStatus();
-		void changeSquareStatus();
+		bool isPathTaken();
+		void setPathTaken();
         bool isBuildable();
 
 };

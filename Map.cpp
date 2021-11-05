@@ -70,7 +70,7 @@ bool Map::canItBeBuildable(unsigned int & row_pos, unsigned int & column_pos){
     if(this->rows < row_pos && this->columns < column_pos) return false;
 
     Square* square_aux = this->squares[row_pos][column_pos];
-    return (square_aux->checkSquareStatus() && square_aux->isBuildable());
+    return (!square_aux->isPathTaken() && square_aux->isBuildable());
 }
 
 void Map::showMap()
@@ -89,15 +89,26 @@ void Map::showMap()
 
 void Map::showCoord(unsigned int row_pos, unsigned int col_pos)
 {
-    cout <<"Ese casillero es: "<< this->squares[row_pos][col_pos]->getTypeSquare() << endl;
-    cout << "El casillero esta: "<<this->squares[row_pos][col_pos]->checkSquareStatus() << endl;
+    cout << "Ese casillero es: " << this->squares[row_pos][col_pos]->getTypeSquare() << endl;
+    cout << "El casillero esta: " << this->squares[row_pos][col_pos]->isPathTaken() << endl;
 }
 
-void Map::flushMemory(){
+void Map::saveChanges(string filename_map, string filename_locations){
+    ofstream file_map(filename_map);
+    ofstream file_locations(filename_locations);
+
     for (unsigned int i = 0; i < this->rows; i++)
     {
         for (unsigned int j = 0; j < this->columns; j++)
         {
+
+            string building_name = "falta";
+            // En ij -> isBuildable = true (es un terreno) y 
+            // ...
+
+            file_locations << building_name << " (" << j << ", " << j << ")" << '\n';
+            file_map << this->squares[i][j]->getTypeSquare() << '\n';
+
             delete this->squares[i][j];
         }
         
@@ -105,4 +116,6 @@ void Map::flushMemory(){
     }
 
     delete [] this->squares;
+    file_locations.close();
+    file_map.close();
 }

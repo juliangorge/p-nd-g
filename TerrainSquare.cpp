@@ -20,14 +20,14 @@ unsigned int TerrainSquare:: showColumn()
 	return this->col_pos;
 }
 
-bool TerrainSquare::checkSquareStatus()
+bool TerrainSquare::isPathTaken()
 {
 	return this->is_path_taken;
 }
 
-void TerrainSquare::changeSquareStatus()
+void TerrainSquare::setPathTaken()
 {
-	this->is_path_taken =! this->is_path_taken;
+	this->is_path_taken = !this->is_path_taken;
 }
 
 bool TerrainSquare::isBuildable(){

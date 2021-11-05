@@ -20,14 +20,14 @@ unsigned int PathSquare::showColumn()
 	return this->col_pos;
 }
 
-bool PathSquare::checkSquareStatus()
+bool PathSquare::isPathTaken()
 {
 	return this->is_path_taken;
 }
 
-void PathSquare::changeSquareStatus()
+void PathSquare::setPathTaken()
 {
-	this->is_path_taken =! this->is_path_taken;
+	this->is_path_taken = !this->is_path_taken;
 }
 
 bool PathSquare::isBuildable(){

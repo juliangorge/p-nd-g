@@ -18,7 +18,7 @@ int main()
     Andypolis city;
 
 	// Lectura de archivo
-    //city.processBuildingsFile(PATH_BUILDINGS);
+    city.processBuildingsFile(PATH_BUILDINGS);
     //city.processMaterialsFile(PATH_MATERIALS);
     city.processMapFile(PATH_MAP);
     city.processLocationsFile(PATH_LOCATIONS);
@@ -32,15 +32,12 @@ int main()
         showMenu();
         answer = getOption();
     }
-
     
     // Liberar memoria
     city.flushMemory();
 
     // Guardar cambio
-    city.saveChanges();
-
-    //city.saveMaterialsChanges(PATH_MATERIALS);
+    city.saveChanges(PATH_MATERIALS, PATH_BUILDINGS, PATH_MAP, PATH_LOCATIONS);
 
     return 0;
 }

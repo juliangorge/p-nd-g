@@ -21,14 +21,14 @@ unsigned int LakeSquare:: showColumn()
 	return this->col_pos;
 }
 
-bool LakeSquare::checkSquareStatus()
+bool LakeSquare::isPathTaken()
 {
 	return this->is_path_taken;
 }
 
-void LakeSquare::changeSquareStatus()
+void LakeSquare::setPathTaken()
 {
-	this->is_path_taken =! this->is_path_taken;
+	this->is_path_taken = !this->is_path_taken;
 }
 
 bool LakeSquare::isBuildable(){

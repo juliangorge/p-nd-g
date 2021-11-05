@@ -144,17 +144,27 @@ class Andypolis {
         Material* getMaterialByPos(int pos);
 
         void flushMemory();
-        void saveChanges();
+        void saveChanges(string path_materials, string path_buildings, string path_map, string path_locations);
 
         // PRE: Recibe una ruta de archivo valida.
         // POST: Guarda en dicho archivo todos los cambios producidos en el objeto Building,
-        // Siguiendo el formato: nombre_edificio piedra madera metal cantidad_construidos máxima_cantidad_permitidos.
+        // Siguiendo el formato:
+        // nombre_edificio piedra madera metal cantidad_construidos máxima_cantidad_permitidos.
         void saveBuildingsChanges(string filename);
 
         // PRE: Recibe una ruta de archivo valida.
         // POST: Guarda en dicho archivo todos los cambios producidos en el objeto Material,
-        // Siguiendo el formato: nombre_material cantidad_material.
+        // Siguiendo el formato:
+        // nombre_material cantidad_material.
         void saveMaterialsChanges(string filename);
+
+        void saveMapChanges(string filename_map, string filename_locations);
+
+        // PRE: Recibe una ruta de archivo valida.
+        // POST: Guarda en dicho archivo todos los cambios producidos en el objeto Location,
+        // Siguiendo el formato:
+        // nombre_edificio (fila, columna)
+        void saveLocationsChanges(string filename);
 
 };
 

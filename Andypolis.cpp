@@ -194,7 +194,29 @@ void Andypolis:: showInventory(){
 }
 
 void Andypolis:: colectResources(){
-    //
+    for(int j = 0; j < this->building_quantity; j++){
+
+        switch(this->buildings[j]->getName()[0])
+        {
+            case 'M':
+                for(int i = 0; i < this->material_quantity; i++){
+                    if(this->materials[i]->getName() == "piedra") this->materials[i]->increaseQuantity(15);
+                }
+                break;
+            case 'A':
+                for(int i = 0; i < this->material_quantity; i++){
+                    if(this->materials[i]->getName() == "madera") this->materials[i]->increaseQuantity(25);
+                }
+                break;
+            case 'F':
+                for(int i = 0; i < this->material_quantity; i++){
+                    if(this->materials[i]->getName() == "metal") this->materials[i]->increaseQuantity(40); 
+                }
+                break;
+
+        }
+
+    }
 }
 
 void Andypolis:: rainResources(){
@@ -310,8 +332,10 @@ void Andypolis:: flushMemory(){
 
 }
 
-void Andypolis:: saveChanges(){
-
+void Andypolis:: saveChanges(string path_materials, string path_buildings, string path_map, string path_locations){
+    saveBuildingsChanges(path_buildings);
+    saveMaterialsChanges(path_materials);
+    saveMapChanges(path_map, path_locations);
 }
 
 void Andypolis:: saveBuildingsChanges(string filename){
@@ -341,6 +365,10 @@ void Andypolis:: saveMaterialsChanges(string filename){
 
     delete [] this->materials;
 	file.close();
+}
+
+void Andypolis:: saveMapChanges(string filename_map, string filename_locations){
+    this->map->saveChanges(filename_map, filename_locations);
 }
 
 Andypolis:: ~Andypolis(){

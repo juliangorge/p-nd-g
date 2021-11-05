@@ -16,8 +16,8 @@ class Square
         virtual char getTypeSquare() = 0;
         virtual unsigned int showRow() = 0;
         virtual unsigned int showColumn() = 0;
-		virtual bool checkSquareStatus() = 0;
-		virtual void changeSquareStatus() = 0;
+		virtual bool isPathTaken() = 0;
+		virtual void setPathTaken() = 0;
         virtual bool isBuildable() = 0;
 };
 
