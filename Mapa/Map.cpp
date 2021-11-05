@@ -85,3 +85,17 @@ void Map::showCoord(unsigned int row_pos, unsigned int col_pos)
     cout <<"Ese casillero es: "<< this->squares[row_pos][col_pos]->getTypeSquare() << endl;
     cout << "El casillero esta: "<<this->squares[row_pos][col_pos]->checkSquareStatus() << endl;
 }
+
+void Map::flushMemory(){
+    for (unsigned int i = 0; i < this->rows; i++)
+    {
+        for (unsigned int j = 0; j < this->columns; j++)
+        {
+            delete this->squares[i][j];
+        }
+        
+        delete [] this->squares[i];
+    }
+
+    delete [] this->squares;
+}
