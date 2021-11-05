@@ -72,6 +72,9 @@ void selectedOption(Andypolis& city, int answer){
             // ...
             city.rainResources();
             break;
+        case 10:
+            //...
+            break;
     }
 }
 
@@ -83,12 +86,14 @@ int getOption(){
     cout << "Ingrese el número de su acción elegida : ";
     cin >> option;
 
-    bool isValidOption = option[0] >= (int)'1' && option[0] <= (int)'6' && option[1] == '\0';
+    bool isValidOption = (option[FIRST_POS] >= (int)'1' && option[FIRST_POS] <= (int)'9' && option[SECOND_POS] == '\0') || 
+                         (option[FIRST_POS] == (int)'1' && option[SECOND_POS] == (int)'0' && option[THIRD_POS] == '\0');
 
     while(!isValidOption){
         cout << "La opción elegida no es una opcion válida, por favor ingrese otra opción: ";
         cin >> option;
-        isValidOption = option[0] >= (int)'1' && option[0] <= (int)'6' && option[1] == '\0';
+        isValidOption = (option[FIRST_POS] >= (int)'1' && option[FIRST_POS] <= (int)'9' && option[SECOND_POS] == '\0') || 
+                         (option[FIRST_POS] == (int)'1' && option[SECOND_POS] == (int)'0' && option[THIRD_POS] == '\0');
     }
 
     answer = stoi(option);

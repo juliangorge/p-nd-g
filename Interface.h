@@ -4,6 +4,9 @@
 #include <iostream>
 #include "Andypolis.h"
 
+const int FIRST_POS = 0;
+const int SECOND_POS = 1;
+const int THIRD_POS = 2;
 using namespace std;
 
 // PRE:
