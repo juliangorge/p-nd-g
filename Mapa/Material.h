@@ -12,6 +12,7 @@ class Material {
     private:
         string name;
         int quantity;
+        char material_char;
 
     // Methods
     public:
@@ -47,6 +48,10 @@ class Material {
         // PRE: Recibe un valor entero
         // POST: Resta el valor ingresado a la cantidad previa
         void decreaseQuantity(int quantity);
+
+        // PRE: 
+        // POST: Retorna el valor valido
+        void getChar();
 };
 
 #endif
