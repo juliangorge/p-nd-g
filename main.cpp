@@ -10,7 +10,7 @@ const string PATH_BUILDINGS = "edificios.txt";
 const string PATH_MAP = "mapa.txt";
 const string PATH_LOCATIONS = "ubicaciones.txt";
 
-const int EXIT_OPTION = 6;
+const int EXIT_OPTION = 10;
 
 int main()
 {
@@ -18,22 +18,20 @@ int main()
     Andypolis city;
 
 	// Lectura de archivo
-    city.processBuildingsFile(PATH_BUILDINGS);
-    city.processMaterialsFile(PATH_MATERIALS);
+    //city.processBuildingsFile(PATH_BUILDINGS);
+    //city.processMaterialsFile(PATH_MATERIALS);
     city.processMapFile(PATH_MAP);
     city.processLocationsFile(PATH_LOCATIONS);
 
     // Mostrar menu
     showMenu();
     int answer = getOption();
-    do{
 
+    while(answer != EXIT_OPTION){
         selectedOption(city, answer);
         showMenu();
         answer = getOption();
-
-
-    }while(answer != EXIT_OPTION);
+    }
 
     
     // Liberar memoria
@@ -41,6 +39,8 @@ int main()
 
     // Guardar cambio
     city.saveChanges();
+
+    //city.saveMaterialsChanges(PATH_MATERIALS);
 
     return 0;
 }
