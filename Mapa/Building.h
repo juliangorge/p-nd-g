@@ -16,6 +16,8 @@ class Building {
         int iron;
         int quantity;
         int max;
+        char building_char;
+        bool provide_materials;
 
     // Methods
     public:
@@ -67,6 +69,10 @@ class Building {
         // PRE:
         // POST: Retorna la cantidad maxima de edificios.
         int getMax();
+
+        // PRE: 
+        // POST: Retorna el valor valido
+        void getChar();
 };
 
 #endif

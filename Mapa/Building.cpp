@@ -10,6 +10,9 @@ Building:: Building(string name, int stone, int wood, int iron, int max){
     this->iron = iron;
     this->quantity = 0;
     this->max = max;
+    this->building_char = 'F';
+
+    this->getChar();
 }
 
 string Building:: getName(){
@@ -50,6 +53,28 @@ void Building:: decreaseQuantity(int quantity){
 
 int Building:: getMax(){
     return this->max;
+}
+
+void Building:: getChar(){
+    switch(this->name){
+        case 'Mina':
+            this->building_quantity = 'M';
+            break;
+        case 'Aserradero':
+            this->building_quantity = 'A';
+            break;
+        case 'Planta eléctrica':
+            this->building_quantity = 'P';
+            break;
+        case 'Escuela':
+            this->building_quantity = 'E';
+            break;
+        case 'Obelisco':
+            this->building_quantity = 'O';
+            break;
+        default:
+            this->building_quantity = 'F';
+    }
 }
 
 Building:: ~Building(){
