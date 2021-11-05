@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Material:: Material(string name, int quantity){
+Material:: Material(string name, unsigned int quantity){
     this->name = name;
     this->quantity = quantity;
     this->material_char = 'W';
@@ -23,7 +23,7 @@ void Material:: increaseQuantity(){
     this->quantity++;
 }
 
-void Material:: increaseQuantity(int quantity){
+void Material:: increaseQuantity(unsigned int quantity){
     this->quantity = this->quantity + quantity;
 }
 
@@ -31,7 +31,7 @@ void Material:: decreaseQuantity(){
     this->quantity--;
 }
 
-void Material:: decreaseQuantity(int quantity){
+void Material:: decreaseQuantity(unsigned int quantity){
     this->quantity = this->quantity - quantity;
 }
 

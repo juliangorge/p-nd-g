@@ -11,11 +11,11 @@ class Building {
     // Attributes
     private:
         string name;
-        int stone;
-        int wood;
-        int iron;
-        int quantity;
-        int max;
+        unsigned int stone;
+        unsigned int wood;
+        unsigned int iron;
+        unsigned int quantity;
+        unsigned int max;
         char building_char;
         bool provide_materials;
 
@@ -24,7 +24,7 @@ class Building {
     
         // PRE: Los parametros deben ser validos.
 	    // POST: Crea un objeto Building.
-        Building(string name, int stone, int wood, int iron, int max);
+        Building(string name, unsigned int stone, unsigned int wood, unsigned int iron, unsigned int max);
         
         // PRE:
         // POST: Destruye un objeto Building.
@@ -36,19 +36,19 @@ class Building {
 
         // PRE:
         // POST: Retorna la cantidad de piedra.
-        int getStone();
+        unsigned int getStone();
 
         // PRE:
         // POST: Retorna la cantidad de madera.
-        int getWood();
+        unsigned int getWood();
 
         // PRE:
         // POST: Retorna la cantidad de metal.
-        int getIron();
+        unsigned int getIron();
 
         // PRE:
         // POST: Retorna la cantidad de edificios construidos.
-        int getQuantity();
+        unsigned int getQuantity();
 
         // PRE:
         // POST: Suma una unidad a la cantidad
@@ -56,7 +56,7 @@ class Building {
     
         // PRE: Recibe un valor entero
         // POST: Suma el valor ingresado a la cantidad previa
-        void increaseQuantity(int quantity);
+        void increaseQuantity(unsigned int quantity);
         
         // PRE:
         // POST: Resta una unidad a la cantidad
@@ -64,11 +64,11 @@ class Building {
 
         // PRE: Recibe un valor entero
         // POST: Resta el valor ingresado a la cantidad previa
-        void decreaseQuantity(int quantity);
+        void decreaseQuantity(unsigned int quantity);
 
         // PRE:
         // POST: Retorna la cantidad maxima de edificios.
-        int getMax();
+        unsigned int getMax();
 
         // PRE: 
         // POST: Retorna el valor valido

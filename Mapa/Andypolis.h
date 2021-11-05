@@ -104,6 +104,9 @@ class Andypolis {
         // POST: Retorna un objeto Material segun su posicion.
         Material* getMaterialByPos(int pos);
 
+        void flushMemory();
+        void saveChanges();
+
         // PRE: Recibe una ruta de archivo valida.
         // POST: Guarda en dicho archivo todos los cambios producidos en el objeto Building,
         // Siguiendo el formato: nombre_edificio piedra madera metal cantidad_construidos máxima_cantidad_permitidos.

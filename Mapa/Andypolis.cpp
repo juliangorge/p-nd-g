@@ -196,10 +196,8 @@ void Andypolis:: addMaterial(Material* material){
 
 void Andypolis:: processBuildingsFile(string filename){
     ifstream file(filename);
-    string name;
-    int stone, wood, iron, max;
 
-    while(file >> name >> stone >> wood >> iron >> max){
+    while(file >> string name >> unsigned int stone >> unsigned int wood >> unsigned int iron >> unsigned int max){
         addBuilding(new Building(name, stone, wood, iron, max));
    }
 
@@ -208,6 +206,16 @@ void Andypolis:: processBuildingsFile(string filename){
 
 void Andypolis:: processMaterialsFile(string filename){
     ifstream file(filename);
+
+    while(file >> string name >> unsigned int quantity){
+        addMaterial(new Material(name, quantity));
+    }
+
+    file.close();
+}
+
+void Andypolis:: processMapFile(string filename){
+    /*ifstream file(filename);
     string name;
     int quantity;
 
@@ -215,7 +223,17 @@ void Andypolis:: processMaterialsFile(string filename){
         addMaterial(new Material(name, quantity));
     }
 
-	file.close();
+    file.close();*/
+}
+
+void Andypolis:: processLocationsFile(string filename){
+    ifstream file(filename);
+
+    while(file >> string name >> unsigned int row >> unsigned int column){
+        //addLocation(new Location(name, row, column));
+    }
+
+    file.close();
 }
 
 int Andypolis:: getBuildingQuantity(){
@@ -232,6 +250,14 @@ Building* Andypolis:: getBuildingByPos(int pos){
 
 Material* Andypolis:: getMaterialByPos(int pos){
     return this->materials[pos];
+}
+
+void Andypolis:: flushMemory(){
+
+}
+
+void Andypolis:: saveChanges(){
+
 }
 
 void Andypolis:: saveBuildingsChanges(string filename){
