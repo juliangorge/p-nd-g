@@ -15,7 +15,7 @@ string Material:: getName(){
     return this->name;
 }
 
-int Material:: getQuantity(){
+unsigned int Material:: getQuantity(){
     return this->quantity;
 }
 

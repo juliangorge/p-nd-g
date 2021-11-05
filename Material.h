@@ -31,7 +31,7 @@ class Material {
 
         // PRE:
         // POST: Retorna la cantidad
-        int getQuantity();
+        unsigned int getQuantity();
         
         // PRE:
         // POST: Suma una unidad a la cantidad

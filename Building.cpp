@@ -11,6 +11,7 @@ Building:: Building(string name, unsigned int stone, unsigned int wood, unsigned
     this->quantity = 0;
     this->max = max;
     this->building_char = 'F';
+    this->provide_materials = true;
 
     this->getChar();
 }
@@ -59,21 +60,27 @@ void Building:: getChar(){
     switch(this->name[0]){
         case 'M':
             this->building_char = 'M';
+            this->provide_materials = true;
             break;
         case 'A':
             this->building_char = 'A';
+            this->provide_materials = true;
             break;
         case 'P':
             this->building_char = 'P';
+            this->provide_materials = true;
             break;
         case 'E':
             this->building_char = 'E';
+            this->provide_materials = false;
             break;
         case 'O':
             this->building_char = 'O';
+            this->provide_materials = false;
             break;
         default:
             this->building_char = 'F';
+            this->provide_materials = true;
     }
 }
 
