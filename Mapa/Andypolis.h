@@ -29,10 +29,6 @@ class Andypolis {
         ~Andypolis();
 
         // PRE:
-        // POST: Imprime una lista de Materiales en pantalla.
-        void showMaterials();
-
-        // PRE:
         // POST: Imprime una lista de Edificios construidos en pantalla.
         void showBuiltBuildings();
 
@@ -71,6 +67,35 @@ class Andypolis {
         // PRE: Recibe una posicion valida.
         // POST: Incrementa la cantidad de materiales en base a los materiales del Edificio de la posicion ingresada.
         void increaseMaterials(int pos);
+
+        // PRE:
+        // POST:
+        void newBuildingByName();
+
+        // PRE:
+        // POST:
+        void deleteBuildingByCoords();
+
+        // PRE:
+        // POST:
+        void showMap();
+
+        // PRE:
+        // POST:
+        void checkMap();
+
+        // PRE:
+        // POST: Imprime una lista de Materiales en pantalla.
+        void showInventory();
+
+        // PRE:
+        // POST:
+        void colectResources();
+
+        // PRE:
+        // POST:
+        void rainResources();
+
 
         // PRE: Recibe un objeto Material.
         // POST: Ingresa el objeto en un array dinámico.

@@ -9,15 +9,6 @@ Andypolis:: Andypolis(){
     this->material_quantity = 0;
 }
 
-void Andypolis:: showMaterials(){
-    cout << endl << "======================" << endl << endl;
-    cout << "Materiales de construccion: " << endl;
-    for(int i = 0; i < this->material_quantity; i++){
-        cout << "# " << this->materials[i]->getName() << " - " << this->materials[i]->getQuantity() << endl;
-    }
-    cout << endl << "======================" << endl << endl;
-}
-
 void Andypolis:: showBuiltBuildings(){
     cout << endl << "======================" << endl << endl;
     cout << "Edificios construidos: " << endl;
@@ -154,6 +145,39 @@ void Andypolis:: increaseMaterials(int pos){
 
         if(this->materials[i]->getName() == "metal") this->materials[i]->increaseQuantity(this->buildings[pos]->getIron()/2);
     }
+}
+
+void Andypolis:: newBuildingByName(){
+    //
+}
+
+void Andypolis:: deleteBuildingByCoords(){
+    //
+}
+
+void Andypolis:: showMap(){
+    //
+}
+
+void Andypolis:: checkMap(){
+    //
+}
+
+void Andypolis:: showInventory(){
+    cout << endl << "======================" << endl << endl;
+    cout << "Materiales de construccion: " << endl;
+    for(int i = 0; i < this->material_quantity; i++){
+        cout << "# " << this->materials[i]->getName() << " - " << this->materials[i]->getQuantity() << endl;
+    }
+    cout << endl << "======================" << endl << endl;
+}
+
+void Andypolis:: colectResources(){
+    //
+}
+
+void Andypolis:: rainResources(){
+    //
 }
 
 // Andypolis:: Crea un Array dinámico temporal para dimensionar el actual, reemplazandolo y borrandolo.
