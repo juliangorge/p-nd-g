@@ -11,14 +11,15 @@ class Material {
     // Attributes
     private:
         string name;
-        int quantity;
+        unsigned int quantity;
+        char material_char;
 
     // Methods
     public:
 
         // PRE: Los parametros deben ser validos.
 	    // POST: Crea un objeto Material.
-        Material(string name, int quantity);
+        Material(string name, unsigned int quantity);
 
         // PRE:
         // POST: Destruye un objeto Material.
@@ -38,7 +39,7 @@ class Material {
     
         // PRE: Recibe un valor entero
         // POST: Suma el valor ingresado a la cantidad previa
-        void increaseQuantity(int quantity);
+        void increaseQuantity(unsigned int quantity);
         
         // PRE:
         // POST: Resta una unidad a la cantidad
@@ -46,7 +47,11 @@ class Material {
 
         // PRE: Recibe un valor entero
         // POST: Resta el valor ingresado a la cantidad previa
-        void decreaseQuantity(int quantity);
+        void decreaseQuantity(unsigned int quantity);
+
+        // PRE: 
+        // POST: Retorna el valor valido
+        void getChar();
 };
 
 #endif

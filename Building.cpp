@@ -3,32 +3,35 @@
 
 using namespace std;
 
-Building:: Building(string name, int stone, int wood, int iron, int quantity, int max){
+Building:: Building(string name, unsigned int stone, unsigned int wood, unsigned int iron, unsigned int max){
     this->name = name;
     this->stone = stone;
     this->wood = wood;
     this->iron = iron;
-    this->quantity = quantity;
+    this->quantity = 0;
     this->max = max;
+    this->building_char = 'F';
+
+    this->getChar();
 }
 
 string Building:: getName(){
     return this->name;
 }
 
-int Building:: getStone(){
+unsigned int Building:: getStone(){
     return this->stone;
 }
 
-int Building:: getWood(){
+unsigned int Building:: getWood(){
     return this->wood;
 }
 
-int Building:: getIron(){
+unsigned int Building:: getIron(){
     return this->iron;
 }
 
-int Building:: getQuantity(){
+unsigned int Building:: getQuantity(){
     return this->quantity;
 }
 
@@ -36,7 +39,7 @@ void Building:: increaseQuantity(){
     this->quantity++;
 }
 
-void Building:: increaseQuantity(int quantity){
+void Building:: increaseQuantity(unsigned int quantity){
     this->quantity = this->quantity + quantity;
 }
 
@@ -44,12 +47,34 @@ void Building:: decreaseQuantity(){
     this->quantity--;
 }
 
-void Building:: decreaseQuantity(int quantity){
+void Building:: decreaseQuantity(unsigned int quantity){
     this->quantity = this->quantity - quantity;
 }
 
-int Building:: getMax(){
+unsigned int Building:: getMax(){
     return this->max;
+}
+
+void Building:: getChar(){
+    switch(this->name[0]){
+        case 'M':
+            this->building_char = 'M';
+            break;
+        case 'A':
+            this->building_char = 'A';
+            break;
+        case 'P':
+            this->building_char = 'P';
+            break;
+        case 'E':
+            this->building_char = 'E';
+            break;
+        case 'O':
+            this->building_char = 'O';
+            break;
+        default:
+            this->building_char = 'F';
+    }
 }
 
 Building:: ~Building(){

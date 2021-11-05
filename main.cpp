@@ -1,37 +1,46 @@
-#include "Andypolis.h"
-#include "functions.h"
 #include <iostream>
+#include "Andypolis.h"
+#include "Interface.h"
+#include "Map.h"
 
 using namespace std;
 
 const string PATH_MATERIALS = "materiales.txt";
 const string PATH_BUILDINGS = "edificios.txt";
+const string PATH_MAP = "mapa.txt";
+const string PATH_LOCATIONS = "ubicaciones.txt";
+
 const int EXIT_OPTION = 6;
 
-int main() {
+int main()
+{
+    // Inicializacion
+    Andypolis city;
 
-    // Inicializo variables
-    Andypolis City;
-    // Leo los archivos txt y los proceso dentro de la clase Andypolis
-    City.processBuildingsFile(PATH_BUILDINGS);
-    City.processMaterialsFile(PATH_MATERIALS);
+	// Lectura de archivo
+    city.processBuildingsFile(PATH_BUILDINGS);
+    city.processMaterialsFile(PATH_MATERIALS);
+    city.processMapFile(PATH_MAP);
+    city.processLocationsFile(PATH_LOCATIONS);
 
-    cout << "Bienvenido!" << endl;
-    cout << "Elige una opcion:" << endl;
+    // Mostrar menu
     showMenu();
-    int answer=get_option();
+    int answer = getOption();
     do{
 
-        selectedOption(City, answer);
+        selectedOption(city, answer);
         showMenu();
-        answer=get_option();
+        answer = getOption();
 
 
     }while(answer != EXIT_OPTION);
 
-    // Guardo los cambios en los archivos txt
-    City.saveBuildingsChanges(PATH_BUILDINGS);
-    City.saveMaterialsChanges(PATH_MATERIALS);
+    
+    // Liberar memoria
+    city.flushMemory();
+
+    // Guardar cambio
+    city.saveChanges();
 
     return 0;
 }
