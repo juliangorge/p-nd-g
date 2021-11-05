@@ -88,6 +88,14 @@ class Andypolis {
         // POST: Guarda cada linea en un objeto Material.
         void processMaterialsFile(string filename);
 
+        // PRE: Recibe una ruta de archivo valida.
+        // POST: Guarda cada linea en un objeto Map.
+        void processMapFile(string filename);
+
+        // PRE: Recibe una ruta de archivo valida.
+        // POST: Guarda cada linea en un objeto Location.
+        void processLocationsFile(string filename);
+
         // PRE:
         // POST: Retorna la cantidad de Edificios.
         int getBuildingQuantity();

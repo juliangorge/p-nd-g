@@ -36,15 +36,20 @@ void Material:: decreaseQuantity(unsigned int quantity){
 }
 
 void Material:: getChar(){
-    switch(this->name){
-        case 'Metal':
-            this->material_char = 'I';
+
+    switch(this->name[0]){
+        case 'M':
+
+            if(this->name == "Metal"){
+                this->material_char = 'I';
+            }else{
+                this->material_char = 'W';
+            }
+
             break;
-        case 'Piedra':
+        case 'P':
             this->material_char = 'S';
             break;
-        default:
-            this->material_char = 'W';
     }
 }
 

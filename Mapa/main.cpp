@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Andypolis.h"
 #include "Interface.h"
 #include "Map.h"
 
@@ -36,10 +37,10 @@ int main()
 
     
     // Liberar memoria
-    City.flushMemory();
+    city.flushMemory();
 
     // Guardar cambio
-    City.saveChanges();
+    city.saveChanges();
 
     return 0;
 }

@@ -56,24 +56,24 @@ unsigned int Building:: getMax(){
 }
 
 void Building:: getChar(){
-    switch(this->name){
-        case 'Mina':
-            this->building_quantity = 'M';
+    switch(this->name[0]){
+        case 'M':
+            this->building_char = 'M';
             break;
-        case 'Aserradero':
-            this->building_quantity = 'A';
+        case 'A':
+            this->building_char = 'A';
             break;
-        case 'Planta eléctrica':
-            this->building_quantity = 'P';
+        case 'P':
+            this->building_char = 'P';
             break;
-        case 'Escuela':
-            this->building_quantity = 'E';
+        case 'E':
+            this->building_char = 'E';
             break;
-        case 'Obelisco':
-            this->building_quantity = 'O';
+        case 'O':
+            this->building_char = 'O';
             break;
         default:
-            this->building_quantity = 'F';
+            this->building_char = 'F';
     }
 }
 

@@ -197,7 +197,10 @@ void Andypolis:: addMaterial(Material* material){
 void Andypolis:: processBuildingsFile(string filename){
     ifstream file(filename);
 
-    while(file >> string name >> unsigned int stone >> unsigned int wood >> unsigned int iron >> unsigned int max){
+    string name;
+    unsigned int stone, wood, iron, max;
+
+    while(file >> name >> stone >> wood >> iron >> max){
         addBuilding(new Building(name, stone, wood, iron, max));
    }
 
@@ -207,7 +210,10 @@ void Andypolis:: processBuildingsFile(string filename){
 void Andypolis:: processMaterialsFile(string filename){
     ifstream file(filename);
 
-    while(file >> string name >> unsigned int quantity){
+    string name;
+    unsigned int quantity;
+
+    while(file >> name >> quantity){
         addMaterial(new Material(name, quantity));
     }
 
@@ -229,7 +235,10 @@ void Andypolis:: processMapFile(string filename){
 void Andypolis:: processLocationsFile(string filename){
     ifstream file(filename);
 
-    while(file >> string name >> unsigned int row >> unsigned int column){
+    string name;
+    unsigned int row, column;
+
+    while(file >> name >> row >> column){
         //addLocation(new Location(name, row, column));
     }
 
