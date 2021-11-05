@@ -8,6 +8,11 @@ class TerrainSquare : public Square
         TerrainSquare();
         ~TerrainSquare();
         char getTypeSquare();
+        unsigned int showRow();
+		unsigned int showColumn();
+		bool checkSquareStatus();
+		void changeSquareStatus();
+
 };
 
 #endif //TERRAINSQUARE_H

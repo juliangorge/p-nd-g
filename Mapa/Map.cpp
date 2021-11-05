@@ -62,6 +62,7 @@ void Map::loadMap(unsigned int row_pos, unsigned int col_pos, char square_type)
 
         case 'L':
             this->squares[row_pos][col_pos] = new LakeSquare();
+            break;
     }
 }
 
@@ -77,4 +78,10 @@ void Map::showMap()
         }
         cout << endl;
     }
+}
+
+void Map::showCoord(unsigned int row_pos, unsigned int col_pos)
+{
+    cout <<"Ese casillero es: "<< this->squares[row_pos][col_pos]->getTypeSquare() << endl;
+    cout << "El casillero esta: "<<this->squares[row_pos][col_pos]->checkSquareStatus() << endl;
 }
