@@ -7,6 +7,7 @@ using namespace std;
 Andypolis:: Andypolis(){
     this->building_quantity = 0;
     this->material_quantity = 0;
+    this->map = new Map();
 }
 
 void Andypolis:: showBuiltBuildings(){
@@ -32,26 +33,6 @@ void Andypolis:: showBuildings(){
         cout << endl;
     }
     cout << "======================" << endl << endl;
-}
-
-void Andypolis:: newBuilding(){
-    string name, confirm;
-    int pos;
-
-    if((pos = checkIfBuildingExistsByName()) == -1) return;
-
-    if(!checkByMaterials(pos) || !checkByMax(pos)) return;
-
-    cout << "Escribe `Y` para confirmar: ";
-    cin >> confirm;
-
-    if(confirm == "Y" || confirm == "y"){
-        this->buildings[pos]->increaseQuantity();
-        decreaseMaterials(pos);
-        cout << "Confirmado" << endl;
-    }else{
-        cout << "Cancelado" << endl;
-    }
 }
 
 void Andypolis:: deleteBuilding(){
@@ -147,8 +128,48 @@ void Andypolis:: increaseMaterials(int pos){
     }
 }
 
+bool Andypolis:: isPathTaken(unsigned int & row_pos, unsigned int & column_pos){
+    cout << "Escribe la fila: ";
+    cin >> row_pos;
+
+    cout << "Escribe la columna: ";
+    cin >> column_pos;
+
+    return this->map->canItBeBuildable(row_pos, column_pos);
+
+}
+
 void Andypolis:: newBuildingByName(){
-    //
+    string name, confirm;
+    int pos;
+    unsigned int row_pos, column_pos;
+
+    // Pedir coordenadas y verificar si se puede construir;
+    if(!isPathTaken(row_pos, column_pos)){
+        cout << "No se puede construir en las coordenadas ingresadas" << endl;
+        return;
+    }
+
+    if((pos = checkIfBuildingExistsByName()) == -1){
+        cout << "No se puede construir" << endl;
+        return;
+    }
+
+    if(!checkByMaterials(pos) || !checkByMax(pos)){
+        cout << "No se puede construir" << endl;
+        return;
+    }
+
+    cout << "Escribe `Y` para confirmar: ";
+    cin >> confirm;
+
+    if(confirm == "Y" || confirm == "y"){
+        this->buildings[pos]->increaseQuantity();
+        decreaseMaterials(pos);
+        cout << "Confirmado" << endl;
+    }else{
+        cout << "Cancelado" << endl;
+    }
 }
 
 void Andypolis:: deleteBuildingByCoords(){

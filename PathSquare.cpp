@@ -1,8 +1,9 @@
 #include "PathSquare.h"
 PathSquare::PathSquare()
 {
-    this->square_type = 'C';
-    this->is_path_taken = false;
+	this->square_type = 'C';
+	this->is_path_taken = false;
+	this->is_buildable = false;
 }
 
 char PathSquare::getTypeSquare()
@@ -26,7 +27,11 @@ bool PathSquare::checkSquareStatus()
 
 void PathSquare::changeSquareStatus()
 {
-	this->is_path_taken=!this->is_path_taken;
+	this->is_path_taken =! this->is_path_taken;
+}
+
+bool PathSquare::isBuildable(){
+	return this->is_buildable;
 }
 
 PathSquare::~PathSquare(){

@@ -12,6 +12,7 @@ class PathSquare : public Square
 		unsigned int showColumn();
 		bool checkSquareStatus();
 		void changeSquareStatus();
+        bool isBuildable();
 };
 
 #endif //PATHSQUARE_H

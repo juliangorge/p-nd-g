@@ -3,7 +3,7 @@ TerrainSquare::TerrainSquare()
 {
    this->square_type = 'T';
    this->is_path_taken = false;
-
+   this->is_buildable = true;
 }
 
 char TerrainSquare::getTypeSquare()
@@ -27,7 +27,11 @@ bool TerrainSquare::checkSquareStatus()
 
 void TerrainSquare::changeSquareStatus()
 {
-	this->is_path_taken=!this->is_path_taken;
+	this->is_path_taken =! this->is_path_taken;
+}
+
+bool TerrainSquare::isBuildable(){
+	return this->is_buildable;
 }
 
 TerrainSquare:: ~TerrainSquare(){

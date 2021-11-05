@@ -12,6 +12,7 @@ class LakeSquare : public Square
 		unsigned int showColumn();
 		bool checkSquareStatus();
 		void changeSquareStatus();
+        bool isBuildable();
 };
 
 #endif //LAKESQUARE_H

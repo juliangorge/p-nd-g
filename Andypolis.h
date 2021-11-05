@@ -1,6 +1,7 @@
 #ifndef Andypolis_INCLUDED
 #define Andypolis_INCLUDED
 
+#include "Map.h"
 #include "Material.h"
 #include "Building.h"
 #include <string>
@@ -13,6 +14,7 @@ class Andypolis {
     private:
         Building** buildings;
         Material** materials;
+        Map* map;
 
         int building_quantity;
         int material_quantity;
@@ -35,6 +37,10 @@ class Andypolis {
         // PRE:
         // POST: Imprime una lista de Edificios en pantalla.
         void showBuildings();
+
+        // PRE: Recibe fila y columna
+        // POST: Retorna true si esta disponible.
+        bool isPathTaken(unsigned int & row_pos, unsigned int & column_pos);
 
         // PRE:
         // POST: Consulta el edificio por nombre y incrementa en 1 unidad.

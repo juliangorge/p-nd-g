@@ -18,6 +18,7 @@ class Map
         Map();
         void readMap();
         void loadMap(unsigned int rows, unsigned int columns, char square_type);
+        bool canItBeBuildable(unsigned int & row_pos, unsigned int & column_pos);
         void showMap();
         void showCoord(unsigned int row_pos, unsigned int col_pos);
         void flushMemory();

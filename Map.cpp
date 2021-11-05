@@ -66,6 +66,13 @@ void Map::loadMap(unsigned int row_pos, unsigned int col_pos, char square_type)
     }
 }
 
+bool Map::canItBeBuildable(unsigned int & row_pos, unsigned int & column_pos){
+    if(this->rows < row_pos && this->columns < column_pos) return false;
+
+    Square* square_aux = this->squares[row_pos][column_pos];
+    return (square_aux->checkSquareStatus() && square_aux->isBuildable());
+}
+
 void Map::showMap()
 {
     cout << "Filas: " << this->rows << endl;

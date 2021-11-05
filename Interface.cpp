@@ -83,7 +83,7 @@ int getOption(){
 
     int answer;
 
-    cout << "Ingrese el número de su acción elegida : ";
+    cout << "Ingrese el número de su acción elegida: ";
     cin >> option;
 
     bool isValidOption = (option[FIRST_POS] >= (int)'1' && option[FIRST_POS] <= (int)'9' && option[SECOND_POS] == '\0') || 

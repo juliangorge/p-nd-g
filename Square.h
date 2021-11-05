@@ -8,6 +8,7 @@ class Square
         unsigned int col_pos;
         char square_type;
         bool is_path_taken;
+        bool is_buildable;
 
     public:
         Square(){};
@@ -17,6 +18,7 @@ class Square
         virtual unsigned int showColumn() = 0;
 		virtual bool checkSquareStatus() = 0;
 		virtual void changeSquareStatus() = 0;
+        virtual bool isBuildable() = 0;
 };
 
 #endif // SQUARE_H

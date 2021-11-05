@@ -12,6 +12,7 @@ class TerrainSquare : public Square
 		unsigned int showColumn();
 		bool checkSquareStatus();
 		void changeSquareStatus();
+        bool isBuildable();
 
 };
 
