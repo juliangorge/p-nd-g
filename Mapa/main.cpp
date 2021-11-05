@@ -9,9 +9,12 @@ int main()
 	unsigned int col_pos;
     Map map;
     map.showMap();
+    /*
     cout<<"Ingrese coordenada: ";
     cin>>row_pos;
     cin>>col_pos;
     map.showCoord(row_pos, col_pos);
+    */
+    map.flushMemory();
     return 0;
 }

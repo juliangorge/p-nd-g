@@ -20,6 +20,7 @@ class Map
         void loadMap(unsigned int rows, unsigned int columns,char square_type);
         void showMap();
         void showCoord(unsigned int row_pos, unsigned int col_pos);
+        void flushMemory();
 };
 
 
