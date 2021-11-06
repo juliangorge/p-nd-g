@@ -83,11 +83,11 @@ bool Map::checkCoords(unsigned int row_pos, unsigned int column_pos)
 bool Map::checkTerrainSquare(unsigned int row_pos, unsigned int column_pos)
 {  
     if(!this->squares[row_pos][column_pos]->isTerrain()){
-    	cout << "El casillero elegido no es terreno construible";
+    	cout << "El casillero elegido no es terreno construible" << endl;
     	return false;
     }
     if(!this->squares[row_pos][column_pos]->isSquareFree()){
-    	cout << "El casillero elegido está ocupado";
+    	cout << "El casillero elegido está ocupado" << endl;
     	return false;
     } 
     return true;
@@ -153,4 +153,8 @@ void Map::emptySquare(unsigned int row_pos, unsigned int col_pos)
 {
     this->squares[row_pos][col_pos]->emptySquare();
     return;
+}
+
+string Map::getNamefromCoods(unsigned int row_pos, unsigned int col_pos){
+    return this->squares[row_pos][col_pos]->getObjName();
 }

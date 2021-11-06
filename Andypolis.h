@@ -52,7 +52,7 @@ class Andypolis {
 
         // PRE:
         // POST: Consulta por pantalla el nombre del Edificio y si existe retorna su posicion, de lo contrario -1.
-        int checkIfBuildingExistsByName();
+        int checkIfBuildingExistsByName(string name);
 
         // PRE: Recibe una posicion valida.
         // POST: Retorna TRUE si el Edificio puede construirse en base a la cantidad de material.

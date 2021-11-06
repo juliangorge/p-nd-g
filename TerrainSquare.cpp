@@ -56,7 +56,7 @@ string TerrainSquare::getSquareName()
 
 void TerrainSquare::emptySquare()
 {
-	this->square_name=s.clear();
+	this->square_name.clear();
 	this->type_of_object=this->square_type;
 }
 

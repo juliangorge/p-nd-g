@@ -35,33 +35,11 @@ void Andypolis:: showBuildings(){
     cout << "======================" << endl << endl;
 }
 
-/*void Andypolis:: deleteBuilding(){
-    string name, confirm;
-    int pos;
 
-    if((pos = checkIfBuildingExistsByName()) == -1) return;
 
-    if(!checkByMin(pos)) return;
-
-    cout << "Escribe `Y` para confirmar: ";
-    cin >> confirm;
-
-    if(confirm == "Y" || confirm == "y"){
-        this->buildings[pos]->decreaseQuantity();
-        increaseMaterials(pos);
-        cout << "Confirmado" << endl;        
-    }else{
-        cout << "Cancelado" << endl;
-    }
-}*/
-
-int Andypolis:: checkIfBuildingExistsByName(){
-    string name;
+int Andypolis:: checkIfBuildingExistsByName(string name){
     bool exists = false;
     int pos = -1, i = 0;
-
-    cout << "Ingrese el nombre: ";
-    cin >> name;
 
     while(!exists && i < this->building_quantity){
         exists = (this->buildings[i]->getName() == name);
@@ -130,11 +108,12 @@ void Andypolis:: increaseMaterials(int pos){
 
 
 void Andypolis:: newBuildingByName(){
-    string confirm;
+    string name, confirm;
     int pos;
     unsigned int row_pos, column_pos;
-
-    if((pos = checkIfBuildingExistsByName()) == -1){
+    cout << "Ingrese el nombre: ";
+    cin >> name;
+    if((pos = checkIfBuildingExistsByName(name)) == -1){
         cout << "No se puede construir" << endl;
         return;
     }
@@ -170,16 +149,21 @@ void Andypolis:: newBuildingByName(){
 void Andypolis:: deleteBuildingByCoords()
 {
     unsigned int row_pos, column_pos;
+    int pos;
+    string confirm;
     this->map->addCoords(row_pos, column_pos);
     if(!this->map->checkCoords(row_pos, column_pos)){
         cout << "Las coordenadas ingresadas no son válidas" << endl;
         return;
     }
     if(!this->map->checkTerrainSquare(row_pos, column_pos)){
-        cout << "No se puede construir en las coordenadas ingresadasss" << endl;
+        cout << "No se puede construir en las coordenadas ingresadas" << endl;
         return;
     }
+    cout << "Escribe `Y` para confirmar: ";
+    cin >> confirm;
     if(confirm == "Y" || confirm == "y"){
+        pos = checkIfBuildingExistsByName(this->map->getNamefromCoods(row_pos, column_pos));
         this->buildings[pos]->decreaseQuantity();
         increaseMaterials(pos);
         this->map->emptySquare(row_pos, column_pos);
@@ -188,6 +172,25 @@ void Andypolis:: deleteBuildingByCoords()
         cout << "Cancelado" << endl;
     }
 }
+/*void Andypolis:: deleteBuilding(){
+    string name, confirm;
+    int pos;
+
+    if((pos = checkIfBuildingExistsByName()) == -1) return;
+
+    if(!checkByMin(pos)) return;
+
+    cout << "Escribe `Y` para confirmar: ";
+    cin >> confirm;
+
+    if(confirm == "Y" || confirm == "y"){
+        this->buildings[pos]->decreaseQuantity();
+        increaseMaterials(pos);
+        cout << "Confirmado" << endl;        
+    }else{
+        cout << "Cancelado" << endl;
+    }
+}*/
 
 void Andypolis:: showMap(){
     this->map->showMap();
@@ -328,7 +331,9 @@ void Andypolis:: processLocationsFile(string filename){
     unsigned int row, column;
 
     while(file >> name >> row >> column){
-        //addLocation(new Location(name, row, column));
+        cout<<"1: "<<name<< endl;
+        cout<<"2: "<<row<< endl;
+        cout<<"3: "<<column<< endl;
     }
 
     file.close();
@@ -358,6 +363,7 @@ void Andypolis:: saveChanges(string path_materials, string path_buildings, strin
     saveBuildingsChanges(path_buildings);
     saveMaterialsChanges(path_materials);
     saveMapChanges(path_map, path_locations);
+    //saveLocationChanges(path_map, path_locations);
 }
 
 void Andypolis:: saveBuildingsChanges(string filename){
@@ -391,6 +397,8 @@ void Andypolis:: saveMaterialsChanges(string filename){
 void Andypolis:: saveMapChanges(string filename_map, string filename_locations){
     this->map->saveChanges(filename_map, filename_locations);
 }
+
+//void Andypolis:: saveLocationChanges(string filename_map, string filename_locations){}
 
 Andypolis:: ~Andypolis(){
 }
