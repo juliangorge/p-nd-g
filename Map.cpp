@@ -123,7 +123,7 @@ void Map::saveChanges(string filename_map, string filename_locations){
         {
 
             // Comparo objName con Building 
-            if(this->squares[i][j]->getObjName() != '') file_locations << this->squares[i][j]->getObjName() << " (" << j << ", " << j << ")" << '\n';
+            // if(this->squares[i][j]->getObjName() != '') file_locations << this->squares[i][j]->getObjName() << " (" << j << ", " << j << ")" << '\n';
 
             file_map << this->squares[i][j]->getTypeSquare() << '\n';
 

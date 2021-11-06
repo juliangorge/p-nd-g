@@ -35,7 +35,7 @@ void Andypolis:: showBuildings(){
     cout << "======================" << endl << endl;
 }
 
-void Andypolis:: deleteBuilding(){
+/*void Andypolis:: deleteBuilding(){
     string name, confirm;
     int pos;
 
@@ -53,7 +53,7 @@ void Andypolis:: deleteBuilding(){
     }else{
         cout << "Cancelado" << endl;
     }
-}
+}*/
 
 int Andypolis:: checkIfBuildingExistsByName(){
     string name;
