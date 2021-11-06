@@ -122,11 +122,9 @@ void Map::saveChanges(string filename_map, string filename_locations){
         for (unsigned int j = 0; j < this->columns; j++)
         {
 
-            string building_name = "falta";
-            // En ij -> isBuildable = true (es un terreno) y 
-            // ...
+            // Comparo objName con Building 
+            if(this->squares[i][j]->getObjName() != '') file_locations << this->squares[i][j]->getObjName() << " (" << j << ", " << j << ")" << '\n';
 
-            file_locations << building_name << " (" << j << ", " << j << ")" << '\n';
             file_map << this->squares[i][j]->getTypeSquare() << '\n';
 
             delete this->squares[i][j];
