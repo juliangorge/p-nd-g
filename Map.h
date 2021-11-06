@@ -29,6 +29,7 @@ class Map
         void showCoord(unsigned int row_pos, unsigned int col_pos);
         void saveChanges(string filename_map, string filename_locations);
         void getSquareData(unsigned int row_pos, unsigned int col_pos);
+        void emptySquare(unsigned int row_pos, unsigned int col_pos);
 };
 
 

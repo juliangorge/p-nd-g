@@ -148,3 +148,9 @@ void Map::getSquareData(unsigned int row_pos, unsigned int col_pos)
     return;
 
 }
+
+void Map::emptySquare(unsigned int row_pos, unsigned int col_pos)
+{
+    this->squares[row_pos][col_pos]->emptySquare();
+    return;
+}

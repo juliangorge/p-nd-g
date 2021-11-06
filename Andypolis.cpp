@@ -179,6 +179,14 @@ void Andypolis:: deleteBuildingByCoords()
         cout << "No se puede construir en las coordenadas ingresadasss" << endl;
         return;
     }
+    if(confirm == "Y" || confirm == "y"){
+        this->buildings[pos]->decreaseQuantity();
+        increaseMaterials(pos);
+        this->map->emptySquare(row_pos, column_pos);
+        cout << "Confirmado" << endl;        
+    }else{
+        cout << "Cancelado" << endl;
+    }
 }
 
 void Andypolis:: showMap(){

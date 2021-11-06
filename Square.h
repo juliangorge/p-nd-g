@@ -27,6 +27,7 @@ class Square
         virtual bool isSquareFree() = 0;
         virtual void changeObject(string object_name, char type_of_object) = 0;
         virtual string getSquareName() = 0;
+        virtual void emptySquare();
 };
 
 #endif // SQUARE_H

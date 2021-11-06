@@ -54,5 +54,12 @@ string LakeSquare::getSquareName()
 	return this->square_name;
 }
 
+void LakeSquare::emptySquare()
+{
+	this->square_name=s.clear();
+	this->type_of_object=this->square_type;
+}
+
+
 LakeSquare:: ~LakeSquare(){
 }

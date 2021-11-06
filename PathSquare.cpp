@@ -54,5 +54,12 @@ string PathSquare::getSquareName()
 	return this->square_name;
 }
 
+void PathSquare::emptySquare()
+{
+	this->square_name=s.clear();
+	this->type_of_object=this->square_type;
+}
+
+
 PathSquare::~PathSquare(){
 }

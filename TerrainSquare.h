@@ -15,6 +15,7 @@ class TerrainSquare : public Square
         bool isSquareFree();
         void changeObject(string object_name, char type_of_object);
         string getSquareName();
+        void emptySquare();
 };
 
 #endif //TERRAINSQUARE_H
