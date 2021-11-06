@@ -40,7 +40,7 @@ class Andypolis {
 
         // PRE: Recibe fila y columna
         // POST: Retorna true si esta disponible.
-        bool isPathTaken(unsigned int & row_pos, unsigned int & column_pos);
+        bool areCoordsOk(unsigned int & row_pos, unsigned int & column_pos);
 
         // PRE:
         // POST: Consulta el edificio por nombre y incrementa en 1 unidad.

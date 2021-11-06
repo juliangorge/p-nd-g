@@ -1,9 +1,16 @@
 #include "PathSquare.h"
+
+#include <string>
+
+using namespace std;
+
 PathSquare::PathSquare()
 {
 	this->square_type = 'C';
-	this->is_path_taken = false;
-	this->is_buildable = false;
+	this->is_it_path = true;
+	this->is_it_terrain = false;
+	this->type_of_object = this->square_type;
+	this->square_name = "casillero transitable";
 }
 
 char PathSquare::getTypeSquare()
@@ -11,27 +18,40 @@ char PathSquare::getTypeSquare()
   return this->square_type;
 }
 
-unsigned int PathSquare::showRow()
+char PathSquare::getTypeObject()
 {
-	return this->row_pos;
-}
-unsigned int PathSquare::showColumn()
-{
-	return this->col_pos;
+	return this->type_of_object;
 }
 
-bool PathSquare::isPathTaken()
+string PathSquare::getObjName()
 {
-	return this->is_path_taken;
+	return this->object_name;
 }
 
-void PathSquare::setPathTaken()
+bool PathSquare::isPath()
 {
-	this->is_path_taken = !this->is_path_taken;
+	return this->is_it_path;
 }
 
-bool PathSquare::isBuildable(){
-	return this->is_buildable;
+bool PathSquare::isTerrain()
+{
+	return this->is_it_terrain;
+}
+
+bool PathSquare::isSquareFree()
+{
+	return this->square_type == this->type_of_object;
+}
+void PathSquare::changeObject(string object_name, char type_of_object)
+{
+	this->object_name = object_name;
+	this->type_of_object = type_of_object;
+	return;
+}
+
+string PathSquare::getSquareName()
+{
+	return this->square_name;
 }
 
 PathSquare::~PathSquare(){

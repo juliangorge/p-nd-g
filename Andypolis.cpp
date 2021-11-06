@@ -128,27 +128,11 @@ void Andypolis:: increaseMaterials(int pos){
     }
 }
 
-bool Andypolis:: isPathTaken(unsigned int & row_pos, unsigned int & column_pos){
-    cout << "Escribe la fila: ";
-    cin >> row_pos;
-
-    cout << "Escribe la columna: ";
-    cin >> column_pos;
-
-    return this->map->canItBeBuildable(row_pos, column_pos);
-
-}
 
 void Andypolis:: newBuildingByName(){
-    string name, confirm;
+    string confirm;
     int pos;
     unsigned int row_pos, column_pos;
-
-    // Pedir coordenadas y verificar si se puede construir;
-    if(!isPathTaken(row_pos, column_pos)){
-        cout << "No se puede construir en las coordenadas ingresadas" << endl;
-        return;
-    }
 
     if((pos = checkIfBuildingExistsByName()) == -1){
         cout << "No se puede construir" << endl;
@@ -157,6 +141,17 @@ void Andypolis:: newBuildingByName(){
 
     if(!checkByMaterials(pos) || !checkByMax(pos)){
         cout << "No se puede construir" << endl;
+        return;
+    }
+
+    // Pedir coordenadas y verificar si se puede construir;
+    this->map->addCoords(row_pos, column_pos);
+    if(!this->map->checkCoords(row_pos, column_pos)){
+        cout << "Las coordenadas ingresadas no son válidas" << endl;
+        return;
+    }
+    if(!this->map->checkTerrainSquare(row_pos, column_pos)){
+        cout << "No se puede construir en las coordenadas ingresadas" << endl;
         return;
     }
 
@@ -172,16 +167,35 @@ void Andypolis:: newBuildingByName(){
     }
 }
 
-void Andypolis:: deleteBuildingByCoords(){
-    //
+void Andypolis:: deleteBuildingByCoords()
+{
+    unsigned int row_pos, column_pos;
+    this->map->addCoords(row_pos, column_pos);
+    if(!this->map->checkCoords(row_pos, column_pos)){
+        cout << "Las coordenadas ingresadas no son válidas" << endl;
+        return;
+    }
+    if(!this->map->checkTerrainSquare(row_pos, column_pos)){
+        cout << "No se puede construir en las coordenadas ingresadasss" << endl;
+        return;
+    }
 }
 
 void Andypolis:: showMap(){
-    //
+    this->map->showMap();
 }
 
-void Andypolis:: checkMap(){
-    //
+void Andypolis:: checkMap()
+{
+    unsigned int row_pos, column_pos;
+    this->map->addCoords(row_pos, column_pos);
+    if(!this->map->checkCoords(row_pos, column_pos)){
+        cout << "Las coordenadas ingresadas no son válidas" << endl;
+        return;
+    }
+    this->map->getSquareData(row_pos, column_pos);
+    return;
+    
 }
 
 void Andypolis:: showInventory(){
@@ -346,7 +360,6 @@ void Andypolis:: saveBuildingsChanges(string filename){
             this->buildings[i]->getStone() << " " << 
             this->buildings[i]->getWood() << " " <<
             this->buildings[i]->getIron() << " " <<
-            this->buildings[i]->getQuantity() << " " <<
             this->buildings[i]->getMax() << "\n";
         delete this->buildings[i];
     }

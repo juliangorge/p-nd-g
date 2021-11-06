@@ -8,12 +8,13 @@ class TerrainSquare : public Square
         TerrainSquare();
         ~TerrainSquare();
         char getTypeSquare();
-        unsigned int showRow();
-		unsigned int showColumn();
-		bool isPathTaken();
-		void setPathTaken();
-        bool isBuildable();
-
+        char getTypeObject();
+        string getObjName();
+		bool isPath();
+		bool isTerrain();
+        bool isSquareFree();
+        void changeObject(string object_name, char type_of_object);
+        string getSquareName();
 };
 
 #endif //TERRAINSQUARE_H

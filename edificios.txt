@@ -1,4 +1,0 @@
-aserradero 30 100 50 0 2
-fabrica 100 100 250 0 4
-escuela 250 200 45 0 1
-yacimiento 125 140 0 0 2

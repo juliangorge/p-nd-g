@@ -1,9 +1,16 @@
 #include "LakeSquare.h"
+
+#include <string>
+
+using namespace std;
+
 LakeSquare::LakeSquare()
 {
 	this->square_type = 'L';
-    this->is_path_taken = false;
-    this->is_buildable = false;
+    this->is_it_path = false;
+    this->is_it_terrain = false;
+    this->type_of_object = this->square_type;
+    this->square_name = "casillero con agua";
 }
 
 char LakeSquare::getTypeSquare()
@@ -11,28 +18,40 @@ char LakeSquare::getTypeSquare()
 	return this->square_type;
 }
 
-unsigned int LakeSquare:: showRow()
+char LakeSquare::getTypeObject()
 {
-	return this->row_pos;
+	return this->type_of_object;
 }
 
-unsigned int LakeSquare:: showColumn()
+string LakeSquare::getObjName()
 {
-	return this->col_pos;
+	return this->object_name;
 }
 
-bool LakeSquare::isPathTaken()
+bool LakeSquare::isPath()
 {
-	return this->is_path_taken;
+	return this->is_it_path;
 }
 
-void LakeSquare::setPathTaken()
+bool LakeSquare::isTerrain()
 {
-	this->is_path_taken = !this->is_path_taken;
+	return this->is_it_terrain;
 }
 
-bool LakeSquare::isBuildable(){
-	return this->is_buildable;
+bool LakeSquare::isSquareFree()
+{
+	return this->square_type == this->type_of_object;
+}
+void LakeSquare::changeObject(string object_name, char type_of_object)
+{
+	this->object_name = object_name;
+	this->type_of_object = type_of_object;
+	return;
+}
+
+string LakeSquare::getSquareName()
+{
+	return this->square_name;
 }
 
 LakeSquare:: ~LakeSquare(){
