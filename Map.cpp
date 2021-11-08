@@ -128,7 +128,7 @@ void Map::saveChanges(string filename_map, string filename_locations){
         for (unsigned int j = 0; j < this->columns; j++)
         {
 
-            if((this->squares[i][j]->getObjName()).size() > 0) file_locations << this->squares[i][j]->getObjName() << " (" << j << ", " << j << ")" << '\n';
+            if((this->squares[i][j]->getObjName()).size() > 0) file_locations << this->squares[i][j]->getSquareName() << " (" << j << ", " << j << ")" << '\n';
 
             column += this->squares[i][j]->getTypeSquare() + ' ';
 

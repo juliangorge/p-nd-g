@@ -173,25 +173,6 @@ void Andypolis:: deleteBuildingByCoords()
         cout << "Cancelado" << endl;
     }
 }
-/*void Andypolis:: deleteBuilding(){
-    string name, confirm;
-    int pos;
-
-    if((pos = checkIfBuildingExistsByName()) == -1) return;
-
-    if(!checkByMin(pos)) return;
-
-    cout << "Escribe `Y` para confirmar: ";
-    cin >> confirm;
-
-    if(confirm == "Y" || confirm == "y"){
-        this->buildings[pos]->decreaseQuantity();
-        increaseMaterials(pos);
-        cout << "Confirmado" << endl;        
-    }else{
-        cout << "Cancelado" << endl;
-    }
-}*/
 
 void Andypolis:: showMap(){
     this->map->showMap();

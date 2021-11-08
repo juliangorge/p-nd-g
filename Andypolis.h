@@ -47,10 +47,6 @@ class Andypolis {
         void newBuilding();
 
         // PRE:
-        // POST: Consulta el edificio por nombre y disminuye en 1 unidad.
-        // void deleteBuilding();
-
-        // PRE:
         // POST: Consulta por pantalla el nombre del Edificio y si existe retorna su posicion, de lo contrario -1.
         int checkIfBuildingExistsByName(string name);
 
