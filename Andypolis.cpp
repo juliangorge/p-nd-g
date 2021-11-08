@@ -1,6 +1,8 @@
 #include "Andypolis.h"
 #include <string>
 #include <fstream>
+#include <ctype.h>
+
 
 using namespace std;
 
@@ -44,6 +46,7 @@ int Andypolis:: checkIfBuildingExistsByName(string name){
 
     while(!exists && i < this->building_quantity){
         exists = (this->buildings[i]->getName() == name);
+
         if(exists) pos = i;
         i++;
     }
@@ -313,16 +316,29 @@ void Andypolis:: processMaterialsFile(string filename){
 void Andypolis:: processLocationsFile(string filename){
     ifstream file(filename);
 
-    string aux, row_aux, col_aux, name;
+    string aux_3, aux, coords, row_aux, col_aux, name;
     unsigned int row_pos, col_pos;
 
-    while(getline(file, aux, '(')){
-        name = aux;
-        file >> row_aux >> col_aux;
-        
-        row_pos = stoi(row_aux);
-        col_pos = stoi(col_aux);
+    while(file >> name){
+        file >> aux;
+        if(aux[0] == '('){
+            row_aux = aux;
+        }else{
+            name += ' ' + aux;
+            file >> row_aux;
+        }
 
+        file >> col_aux;
+
+        aux_3.clear();
+        for(int i = 0; i < row_aux.length(); i++){
+            if(isdigit(row_aux[i])){
+                aux_3 += row_aux[i];
+            }
+        }
+
+        col_pos = stoi(col_aux);
+        row_pos = stoi(aux_3);
         this->map->setSquareName(row_pos, col_pos, name, addBuildingFromLocations(name));
     }
 
