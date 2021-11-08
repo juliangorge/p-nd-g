@@ -26,6 +26,7 @@ class Map
         void addCoords(unsigned int & row_pos, unsigned int & column_pos);
         bool checkCoords(unsigned int row_pos, unsigned int column_pos);
         bool checkTerrainSquare(unsigned int row_pos, unsigned int column_pos);
+        bool checkTerrainBuilding(unsigned int row_pos, unsigned int column_pos);
         void showMap();
         void showCoord(unsigned int row_pos, unsigned int col_pos);
         void saveChanges(string filename_map, string filename_locations, int building_quantity_total);

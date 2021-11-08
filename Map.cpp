@@ -97,6 +97,19 @@ bool Map::checkTerrainSquare(unsigned int row_pos, unsigned int column_pos)
     return true;
 }
 
+bool Map::checkTerrainBuilding(unsigned int row_pos, unsigned int column_pos)
+{  
+    if(!this->squares[row_pos][column_pos]->isTerrain()){
+        cout << "El casillero elegido no es terreno construible" << endl;
+        return false;
+    }
+    if(this->squares[row_pos][column_pos]->isSquareFree()){
+        cout << "El casillero esta vacío" << endl;
+        return false;
+    } 
+    return true;
+}
+
 
 void Map::showMap()
 {

@@ -158,8 +158,8 @@ void Andypolis:: deleteBuildingByCoords()
         cout << "Las coordenadas ingresadas no son válidas" << endl;
         return;
     }
-    if(!this->map->checkTerrainSquare(row_pos, column_pos)){
-        cout << "No se puede construir en las coordenadas ingresadas" << endl;
+    if(!this->map->checkTerrainBuilding(row_pos, column_pos)){
+        cout << "No se puede destruir el edificio de las coordenadas ingresadas" << endl;
         return;
     }
     cout << "Escribe `Y` para confirmar: ";
