@@ -6,6 +6,7 @@
 #include "PathSquare.h"
 #include "TerrainSquare.h"
 #include "LakeSquare.h"
+#include "Building.h"
 #include <string>
 
 using namespace std;
@@ -28,6 +29,7 @@ class Map
         void showMap();
         void showCoord(unsigned int row_pos, unsigned int col_pos);
         void saveChanges(string filename_map, string filename_locations);
+        void setSquareName(unsigned int row_pos, unsigned int col_pos, string name, char building_char);
         void getSquareData(unsigned int row_pos, unsigned int col_pos);
         void emptySquare(unsigned int row_pos, unsigned int col_pos);
         string getNamefromCoods(unsigned int row_pos, unsigned int col_pos);

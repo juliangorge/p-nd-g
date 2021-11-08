@@ -160,12 +160,6 @@ class Andypolis {
 
         void saveMapChanges(string filename_map, string filename_locations);
 
-        // PRE: Recibe una ruta de archivo valida.
-        // POST: Guarda en dicho archivo todos los cambios producidos en el objeto Location,
-        // Siguiendo el formato:
-        // nombre_edificio (fila, columna)
-        void saveLocationsChanges(string filename);
-
 };
 
 #endif

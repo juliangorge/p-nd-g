@@ -71,8 +71,12 @@ void Map::addCoords(unsigned int & row_pos, unsigned int & column_pos)
     cout << "Escribe la fila: ";
     cin >> row_pos;
 
+    row_pos--;
+
     cout << "Escribe la columna: ";
     cin >> column_pos;
+
+    column_pos--;
 }
 
 bool Map::checkCoords(unsigned int row_pos, unsigned int column_pos)
@@ -117,18 +121,21 @@ void Map::saveChanges(string filename_map, string filename_locations){
     ofstream file_map(filename_map);
     ofstream file_locations(filename_locations);
 
+    string column;
+
     for (unsigned int i = 0; i < this->rows; i++)
     {
         for (unsigned int j = 0; j < this->columns; j++)
         {
 
-            // Comparo objName con Building 
-            // if(this->squares[i][j]->getObjName() != '') file_locations << this->squares[i][j]->getObjName() << " (" << j << ", " << j << ")" << '\n';
+            if((this->squares[i][j]->getObjName()).size() > 0) file_locations << this->squares[i][j]->getObjName() << " (" << j << ", " << j << ")" << '\n';
 
-            file_map << this->squares[i][j]->getTypeSquare() << '\n';
+            column += this->squares[i][j]->getTypeSquare() + ' ';
 
             delete this->squares[i][j];
         }
+
+        file_map << column << '\n';
         
         delete [] this->squares[i];
     }
@@ -137,6 +144,12 @@ void Map::saveChanges(string filename_map, string filename_locations){
     file_locations.close();
     file_map.close();
 }
+
+void Map::setSquareName(unsigned int row_pos, unsigned int col_pos, string name, char building_char){
+    this->squares[row_pos][col_pos]->changeObject(name, building_char);
+    return;
+}
+
 
 void Map::getSquareData(unsigned int row_pos, unsigned int col_pos)
 {

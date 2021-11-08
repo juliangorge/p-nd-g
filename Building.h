@@ -51,6 +51,10 @@ class Building {
         unsigned int getQuantity();
 
         // PRE:
+        // POST: Retorna el caracter del edificio.
+        char getBuildingChar();
+
+        // PRE:
         // POST: Suma una unidad a la cantidad
         void increaseQuantity();
     

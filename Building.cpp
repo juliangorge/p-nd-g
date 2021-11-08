@@ -36,6 +36,10 @@ unsigned int Building:: getQuantity(){
     return this->quantity;
 }
 
+char Building:: getBuildingChar(){
+    return this->building_char;
+}
+
 void Building:: increaseQuantity(){
     this->quantity++;
 }

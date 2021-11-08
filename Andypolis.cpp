@@ -108,7 +108,7 @@ void Andypolis:: increaseMaterials(int pos){
 
 
 void Andypolis:: newBuildingByName(){
-    string name, confirm;
+    string name, building_char, confirm;
     int pos;
     unsigned int row_pos, column_pos;
     cout << "Ingrese el nombre: ";
@@ -138,6 +138,7 @@ void Andypolis:: newBuildingByName(){
     cin >> confirm;
 
     if(confirm == "Y" || confirm == "y"){
+        this->map->setSquareName(row_pos, column_pos, name, this->buildings[pos]->getBuildingChar());
         this->buildings[pos]->increaseQuantity();
         decreaseMaterials(pos);
         cout << "Confirmado" << endl;
@@ -289,12 +290,24 @@ void Andypolis:: addMaterial(Material* material){
 void Andypolis:: processBuildingsFile(string filename){
     ifstream file(filename);
 
-    string name;
+    string aux, name;
     unsigned int stone, wood, iron, max;
 
-    while(file >> name >> stone >> wood >> iron >> max){
+    while(file >> name){
+        file >> aux;
+
+        // Verifico si es un número
+        if(aux[0] >= (int)'0' && aux[0] <= (int)'9'){
+            stone = stoi(aux);
+        }else{
+            name += ' ' + aux;
+            file >> stone;
+        }
+
+        file >> wood >> iron >> max;
         addBuilding(new Building(name, stone, wood, iron, max));
-   }
+    }
+
 
 	file.close();
 }
@@ -363,7 +376,6 @@ void Andypolis:: saveChanges(string path_materials, string path_buildings, strin
     saveBuildingsChanges(path_buildings);
     saveMaterialsChanges(path_materials);
     saveMapChanges(path_map, path_locations);
-    //saveLocationChanges(path_map, path_locations);
 }
 
 void Andypolis:: saveBuildingsChanges(string filename){
@@ -397,8 +409,6 @@ void Andypolis:: saveMaterialsChanges(string filename){
 void Andypolis:: saveMapChanges(string filename_map, string filename_locations){
     this->map->saveChanges(filename_map, filename_locations);
 }
-
-//void Andypolis:: saveLocationChanges(string filename_map, string filename_locations){}
 
 Andypolis:: ~Andypolis(){
 }

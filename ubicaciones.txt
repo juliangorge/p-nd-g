@@ -1,4 +1,4 @@
-oblisco (2, 3)
-escuela (1, 6)
-escuela (4, 2)
-yacimiento (4, 8)
+planta electrica (0, 4)
+mina (1, 8)
+fabrica (7, 2)
+mina (4, 7)

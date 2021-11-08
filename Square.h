@@ -9,11 +9,22 @@ using namespace std;
 class Square
 {
     protected:
-        char square_type;
+        // Es un camino transitable
         bool is_it_path;
+
+        // Es un terreno
         bool is_it_terrain;
+
+        // Caracter del edificio/material en ese casillero (si está vacío es igual a square_type)
         char type_of_object;
+
+        // Nombre del edificio/material contenido en el casillero (si está vacio no hay nombre)
         string object_name;
+
+        // Caracter del casillero (fijo)
+        char square_type;
+
+        // Nombre del casillero (fijo)
         string square_name;
 
     public:
