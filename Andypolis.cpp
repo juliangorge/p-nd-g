@@ -290,7 +290,6 @@ void Andypolis:: processBuildingsFile(string filename){
         addBuilding(new Building(name, stone, wood, iron, max));
     }
 
-
 	file.close();
 }
 
@@ -307,18 +306,6 @@ void Andypolis:: processMaterialsFile(string filename){
     file.close();
 }
 
-void Andypolis:: processMapFile(string filename){
-    /*ifstream file(filename);
-    string name;
-    int quantity;
-
-    while(file >> name >> quantity){
-        addMaterial(new Material(name, quantity));
-    }
-
-    file.close();*/
-}
-
 void Andypolis:: processLocationsFile(string filename){
     ifstream file(filename);
 
@@ -326,9 +313,9 @@ void Andypolis:: processLocationsFile(string filename){
     unsigned int row, column;
 
     while(file >> name >> row >> column){
-        cout<<"1: "<<name<< endl;
-        cout<<"2: "<<row<< endl;
-        cout<<"3: "<<column<< endl;
+        cout << "1: " << name << endl;
+        cout << "2: " << row << endl;
+        cout << "3: " << column << endl;
     }
 
     file.close();

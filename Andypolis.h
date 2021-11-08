@@ -117,10 +117,6 @@ class Andypolis {
         void processMaterialsFile(string filename);
 
         // PRE: Recibe una ruta de archivo valida.
-        // POST: Guarda cada linea en un objeto Map.
-        void processMapFile(string filename);
-
-        // PRE: Recibe una ruta de archivo valida.
         // POST: Guarda cada linea en un objeto Location.
         void processLocationsFile(string filename);
 

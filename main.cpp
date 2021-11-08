@@ -20,7 +20,6 @@ int main()
 	// Lectura de archivo
     city.processBuildingsFile(PATH_BUILDINGS);
     city.processMaterialsFile(PATH_MATERIALS);
-    city.processMapFile(PATH_MAP);
     city.processLocationsFile(PATH_LOCATIONS);
 
     // Mostrar menu
