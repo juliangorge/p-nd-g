@@ -250,6 +250,10 @@ void Andypolis:: addBuilding(Building* building){
 
 }
 
+char Andypolis:: addBuildingFromLocations(string name){
+    return this->buildings[checkIfBuildingExistsByName(name)]->getBuildingChar();
+}
+
 void Andypolis:: addMaterial(Material* material){
     int prev_material_quantity = this->material_quantity;
 
@@ -309,13 +313,17 @@ void Andypolis:: processMaterialsFile(string filename){
 void Andypolis:: processLocationsFile(string filename){
     ifstream file(filename);
 
-    string name;
-    unsigned int row, column;
+    string aux, row_aux, col_aux, name;
+    unsigned int row_pos, col_pos;
 
-    while(file >> name >> row >> column){
-        cout << "1: " << name << endl;
-        cout << "2: " << row << endl;
-        cout << "3: " << column << endl;
+    while(getline(file, aux, '(')){
+        name = aux;
+        file >> row_aux >> col_aux;
+        
+        row_pos = stoi(row_aux);
+        col_pos = stoi(col_aux);
+
+        this->map->setSquareName(row_pos, col_pos, name, addBuildingFromLocations(name));
     }
 
     file.close();
