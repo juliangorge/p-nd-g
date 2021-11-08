@@ -100,9 +100,13 @@ class Andypolis {
         void rainResources();
 
 
-        // PRE: Recibe un objeto Material.
+        // PRE: Recibe un objeto Building.
         // POST: Ingresa el objeto en un array dinámico.
         void addBuilding(Building* building);
+
+        // PRE: Recibe nombre de la construccion
+        // POST: Retorna building_char
+        char addBuildingFromLocations(string name);
 
         // PRE: Recibe un objeto Material.
         // POST: Ingresa el objeto en un array dinámico.
