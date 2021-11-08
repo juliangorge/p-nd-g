@@ -254,11 +254,7 @@ void Andypolis:: addBuilding(Building* building){
 }
 
 char Andypolis:: addBuildingFromLocations(string name){
-    int pos = checkIfBuildingExistsByName(name);
-
-    this->buildings[pos]->increaseQuantity();
-    this->building_quantity++;
-    return this->buildings[pos]->getBuildingChar();
+    return this->buildings[checkIfBuildingExistsByName(name)]->getBuildingChar();
 }
 
 void Andypolis:: addMaterial(Material* material){
