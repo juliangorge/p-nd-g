@@ -28,7 +28,7 @@ class Map
         bool checkTerrainSquare(unsigned int row_pos, unsigned int column_pos);
         void showMap();
         void showCoord(unsigned int row_pos, unsigned int col_pos);
-        void saveChanges(string filename_map, string filename_locations);
+        void saveChanges(string filename_map, string filename_locations, int building_quantity_total);
         void setSquareName(unsigned int row_pos, unsigned int col_pos, string name, char building_char);
         void getSquareData(unsigned int row_pos, unsigned int col_pos);
         void emptySquare(unsigned int row_pos, unsigned int col_pos);

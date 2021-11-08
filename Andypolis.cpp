@@ -6,6 +6,7 @@ using namespace std;
 
 Andypolis:: Andypolis(){
     this->building_quantity = 0;
+    this->building_quantity_total = 0;
     this->material_quantity = 0;
     this->map = new Map();
 }
@@ -349,25 +350,30 @@ Material* Andypolis:: getMaterialByPos(int pos){
     return this->materials[pos];
 }
 
-void Andypolis:: flushMemory(){
-
-}
-
 void Andypolis:: saveChanges(string path_materials, string path_buildings, string path_map, string path_locations){
     saveBuildingsChanges(path_buildings);
     saveMaterialsChanges(path_materials);
     saveMapChanges(path_map, path_locations);
 }
 
+void Andypolis:: setTotalBuilding(unsigned int quantity){
+    this->building_quantity_total += quantity;
+}
+
 void Andypolis:: saveBuildingsChanges(string filename){
     ofstream file(filename);
 
+
     for (int i = 0; i < this->building_quantity; i++){
+
+        setTotalBuilding(this->buildings[i]->getQuantity());
+
         file << this->buildings[i]->getName() << " " <<
             this->buildings[i]->getStone() << " " << 
             this->buildings[i]->getWood() << " " <<
             this->buildings[i]->getIron() << " " <<
             this->buildings[i]->getMax() << "\n";
+
         delete this->buildings[i];
     }
 
@@ -388,7 +394,7 @@ void Andypolis:: saveMaterialsChanges(string filename){
 }
 
 void Andypolis:: saveMapChanges(string filename_map, string filename_locations){
-    this->map->saveChanges(filename_map, filename_locations);
+    this->map->saveChanges(filename_map, filename_locations, this->building_quantity_total);
 }
 
 Andypolis:: ~Andypolis(){

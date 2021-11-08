@@ -32,9 +32,6 @@ int main()
         showMenu();
         answer = getOption();
     }
-    
-    // Liberar memoria
-    city.flushMemory();
 
     // Guardar cambio
     city.saveChanges(PATH_MATERIALS, PATH_BUILDINGS, PATH_MAP, PATH_LOCATIONS);
