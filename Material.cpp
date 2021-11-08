@@ -38,7 +38,7 @@ void Material:: decreaseQuantity(unsigned int quantity){
 void Material:: getChar(){
 
     switch(this->name[0]){
-        case 'M':
+        case 'm':
 
             if(this->name == "Metal"){
                 this->material_char = 'I';
@@ -47,7 +47,7 @@ void Material:: getChar(){
             }
 
             break;
-        case 'P':
+        case 'p':
             this->material_char = 'S';
             break;
     }

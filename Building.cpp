@@ -62,23 +62,23 @@ unsigned int Building:: getMax(){
 
 void Building:: getChar(){
     switch(this->name[0]){
-        case 'M':
+        case 'm':
             this->building_char = 'M';
             this->provide_materials = true;
             break;
-        case 'A':
+        case 'a':
             this->building_char = 'A';
             this->provide_materials = true;
             break;
-        case 'P':
+        case 'p':
             this->building_char = 'P';
             this->provide_materials = true;
             break;
-        case 'E':
+        case 'e':
             this->building_char = 'E';
             this->provide_materials = false;
             break;
-        case 'O':
+        case 'o':
             this->building_char = 'O';
             this->provide_materials = false;
             break;

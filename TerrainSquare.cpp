@@ -40,7 +40,7 @@ bool TerrainSquare::isTerrain()
 
 bool TerrainSquare::isSquareFree()
 {
-	return this->square_type == this->type_of_object;
+	return (this->square_type == this->type_of_object);
 }
 void TerrainSquare::changeObject(string object_name, char type_of_object)
 {
@@ -56,7 +56,7 @@ string TerrainSquare::getSquareName()
 
 void TerrainSquare::emptySquare()
 {
-	this->square_name.clear();
+	this->object_name.clear();
 	this->type_of_object=this->square_type;
 }
 

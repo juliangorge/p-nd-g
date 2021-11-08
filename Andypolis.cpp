@@ -206,17 +206,17 @@ void Andypolis:: colectResources(){
 
         switch(this->buildings[j]->getName()[0])
         {
-            case 'M':
+            case 'm':
                 for(int i = 0; i < this->material_quantity; i++){
                     if(this->materials[i]->getName() == "piedra") this->materials[i]->increaseQuantity(15);
                 }
                 break;
-            case 'A':
+            case 'a':
                 for(int i = 0; i < this->material_quantity; i++){
                     if(this->materials[i]->getName() == "madera") this->materials[i]->increaseQuantity(25);
                 }
                 break;
-            case 'F':
+            case 'f':
                 for(int i = 0; i < this->material_quantity; i++){
                     if(this->materials[i]->getName() == "metal") this->materials[i]->increaseQuantity(40); 
                 }
