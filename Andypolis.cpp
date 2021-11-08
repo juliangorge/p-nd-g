@@ -254,7 +254,11 @@ void Andypolis:: addBuilding(Building* building){
 }
 
 char Andypolis:: addBuildingFromLocations(string name){
-    return this->buildings[checkIfBuildingExistsByName(name)]->getBuildingChar();
+    int pos = checkIfBuildingExistsByName(name);
+    
+    this->buildings[pos]->increaseQuantity();
+
+    return this->buildings[pos]->getBuildingChar();
 }
 
 void Andypolis:: addMaterial(Material* material){
@@ -361,10 +365,9 @@ Material* Andypolis:: getMaterialByPos(int pos){
     return this->materials[pos];
 }
 
-void Andypolis:: saveChanges(string path_materials, string path_buildings, string path_map, string path_locations){
+void Andypolis:: saveChanges(string path_materials, string path_buildings, string path_locations){
     saveBuildingsChanges(path_buildings);
     saveMaterialsChanges(path_materials);
-    saveMapChanges(path_map, path_locations);
 }
 
 void Andypolis:: setTotalBuilding(unsigned int quantity){
@@ -404,8 +407,8 @@ void Andypolis:: saveMaterialsChanges(string filename){
 	file.close();
 }
 
-void Andypolis:: saveMapChanges(string filename_map, string filename_locations){
-    this->map->saveChanges(filename_map, filename_locations, this->building_quantity_total);
+void Andypolis:: saveMapChanges(string filename_locations){
+    this->map->saveChanges(filename_locations, this->building_quantity_total);
 }
 
 Andypolis:: ~Andypolis(){

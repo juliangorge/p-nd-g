@@ -130,13 +130,10 @@ void Map::showCoord(unsigned int row_pos, unsigned int col_pos)
     cout << "Ese casillero es: " << this->squares[row_pos][col_pos]->getTypeSquare() << endl;
 }
 
-void Map::saveChanges(string filename_map, string filename_locations, int building_quantity_total){
-    ofstream file_map(filename_map);
+void Map::saveChanges(string filename_locations, int building_quantity_total){
     ofstream file_locations(filename_locations);
 
     int building_quantity_aux = 0;
-
-    file_map << this->rows << " " << this->columns << '\n';
 
     for (unsigned int i = 0; i < this->rows; i++)
     {
@@ -144,26 +141,20 @@ void Map::saveChanges(string filename_map, string filename_locations, int buildi
         {
 
             if(!this->squares[i][j]->isSquareFree()){
-                file_locations << this->squares[i][j]->getObjName() << " (" << j << ", " << j << ")";
+                file_locations << this->squares[i][j]->getObjName() << " (" << i << ", " << j << ")";
 
                 building_quantity_aux++;
                 if(building_quantity_aux < building_quantity_total) file_locations << '\n';
             }
 
-            file_map << this->squares[i][j]->getTypeObject();
-
-            if(j < this->columns - 1) file_map << " ";
-
             delete this->squares[i][j];
         }
 
-        if(i < this->rows - 1) file_map << '\n';
         delete [] this->squares[i];
     }
 
     delete [] this->squares;
     file_locations.close();
-    file_map.close();
 }
 
 void Map::setSquareName(unsigned int row_pos, unsigned int col_pos, string name, char building_char){

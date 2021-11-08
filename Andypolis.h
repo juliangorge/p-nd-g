@@ -140,7 +140,7 @@ class Andypolis {
         // POST: Retorna un objeto Material segun su posicion.
         Material* getMaterialByPos(int pos);
 
-        void saveChanges(string path_materials, string path_buildings, string path_map, string path_locations);
+        void saveChanges(string path_materials, string path_buildings , string path_locations);
 
         void setTotalBuilding(unsigned int quantity);
 
@@ -156,7 +156,7 @@ class Andypolis {
         // nombre_material cantidad_material.
         void saveMaterialsChanges(string filename);
 
-        void saveMapChanges(string filename_map, string filename_locations);
+        void saveMapChanges(string filename_locations);
 
 };
 

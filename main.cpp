@@ -33,7 +33,7 @@ int main()
     }
 
     // Guardar cambio
-    city.saveChanges(PATH_MATERIALS, PATH_BUILDINGS, PATH_MAP, PATH_LOCATIONS);
+    city.saveChanges(PATH_MATERIALS, PATH_BUILDINGS, PATH_LOCATIONS);
 
     return 0;
 }
