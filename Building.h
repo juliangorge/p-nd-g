@@ -18,6 +18,7 @@ class Building {
         unsigned int max;
         char building_char;
         bool provide_materials;
+        unsigned int materials_provided;
 
     // Methods
     public:
@@ -49,6 +50,10 @@ class Building {
         // PRE:
         // POST: Retorna la cantidad de edificios construidos.
         unsigned int getQuantity();
+
+        // PRE:
+        // POST: Retorna la cantidad de materiales que provee el edificio
+        unsigned int getMaterialsProvided();
 
         // PRE:
         // POST: Retorna el caracter del edificio.

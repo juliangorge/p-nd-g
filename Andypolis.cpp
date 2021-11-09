@@ -28,12 +28,16 @@ void Andypolis:: showBuiltBuildings(){
 
 void Andypolis:: showBuildings(){
     cout << endl << "======================" << endl << endl;
-    cout << "Edificios: " << endl;
+    //cout << "    Edificios | Piedra | Madera | Metal | Construidos | Cant. permitida" << endl;
 
     for(int i = 0; i < this->building_quantity; i++){
         cout << "-> " << (i+1) << ": " << this->buildings[i]->getName() << endl;
-        cout << "Construidos: " << this->buildings[i]->getQuantity() << " (" << (this->buildings[i]->getMax() - this->buildings[i]->getQuantity()) << " para el maximo permitido) " << endl;
-        cout << endl;
+        cout << " | Piedra req = " <<this->buildings[i]->getStone() << " | Madera req = " << this->buildings[i]->getWood() << " | Metal req = " 
+             << this->buildings[i]->getIron() << " | Construidos= " << this->buildings[i]->getQuantity() << " | Construcciones posibles = " 
+             << this->buildings[i]->getMax() - this->buildings[i]->getQuantity()<< endl;
+         
+        //cout << "Construidos: " << this->buildings[i]->getQuantity() << " (" << (this->buildings[i]->getMax() - this->buildings[i]->getQuantity()) << " para el maximo permitido) " << endl;
+    cout << endl;
     }
     cout << "======================" << endl << endl;
 }
@@ -206,28 +210,45 @@ void Andypolis:: showInventory(){
 
 void Andypolis:: colectResources(){
     for(int j = 0; j < this->building_quantity; j++){
-
         switch(this->buildings[j]->getName()[0])
         {
             case 'm':
                 for(int i = 0; i < this->material_quantity; i++){
-                    if(this->materials[i]->getName() == "piedra") this->materials[i]->increaseQuantity(15);
+                    if(this->materials[i]->getName() == "piedra"){
+                        for (unsigned int k = 0; k < buildings[j]->getQuantity(); k++)
+                        {
+                            this->materials[i]->increaseQuantity(buildings[j]->getMaterialsProvided());
+                        }
+                    }
+
+                        
                 }
                 break;
             case 'a':
                 for(int i = 0; i < this->material_quantity; i++){
-                    if(this->materials[i]->getName() == "madera") this->materials[i]->increaseQuantity(25);
+                    if(this->materials[i]->getName() == "madera"){
+                        for (unsigned int k = 0; k < buildings[j]->getQuantity(); k++)
+                        {
+                            this->materials[i]->increaseQuantity(buildings[j]->getMaterialsProvided());
+                        }
+                    }
                 }
                 break;
             case 'f':
                 for(int i = 0; i < this->material_quantity; i++){
-                    if(this->materials[i]->getName() == "metal") this->materials[i]->increaseQuantity(40); 
+                    if(this->materials[i]->getName() == "metal"){
+                        for (unsigned int k = 0; k < buildings[j]->getQuantity(); k++)
+                        {
+                            this->materials[i]->increaseQuantity(buildings[j]->getMaterialsProvided());
+                        }
+                    } 
                 }
                 break;
 
         }
 
     }
+    cout << "Recoleccion de recursos realizada " << endl;
 }
 
 void Andypolis:: rainResources(){
@@ -335,7 +356,7 @@ void Andypolis:: processLocationsFile(string filename){
         file >> col_aux;
 
         aux_3.clear();
-        for(int i = 0; i < row_aux.length(); i++){
+        for(unsigned int i = 0; i < row_aux.length(); i++){
             if(isdigit(row_aux[i])){
                 aux_3 += row_aux[i];
             }
@@ -368,6 +389,7 @@ Material* Andypolis:: getMaterialByPos(int pos){
 void Andypolis:: saveChanges(string path_materials, string path_buildings, string path_locations){
     saveBuildingsChanges(path_buildings);
     saveMaterialsChanges(path_materials);
+    saveMapChanges(path_locations);
 }
 
 void Andypolis:: setTotalBuilding(unsigned int quantity){

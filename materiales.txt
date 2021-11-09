@@ -1,3 +1,3 @@
-madera 300
-metal 940
-piedra 1000
+madera 235
+metal 1110
+piedra 1125

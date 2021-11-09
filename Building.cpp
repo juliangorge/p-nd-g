@@ -10,7 +10,7 @@ Building:: Building(string name, unsigned int stone, unsigned int wood, unsigned
     this->iron = iron;
     this->quantity = 0;
     this->max = max;
-    this->building_char = 'F';
+    this->building_char = 'B';
     this->provide_materials = true;
 
     this->getChar();
@@ -34,6 +34,10 @@ unsigned int Building:: getIron(){
 
 unsigned int Building:: getQuantity(){
     return this->quantity;
+}
+
+unsigned int Building:: getMaterialsProvided(){
+    return this->materials_provided;
 }
 
 char Building:: getBuildingChar(){
@@ -65,14 +69,17 @@ void Building:: getChar(){
         case 'm':
             this->building_char = 'M';
             this->provide_materials = true;
+            this->materials_provided = 15;
             break;
         case 'a':
             this->building_char = 'A';
             this->provide_materials = true;
+            this->materials_provided = 25;
             break;
-        case 'p':
-            this->building_char = 'P';
+        case 'f':
+            this->building_char = 'F';
             this->provide_materials = true;
+            this->materials_provided = 40;
             break;
         case 'e':
             this->building_char = 'E';
@@ -82,9 +89,12 @@ void Building:: getChar(){
             this->building_char = 'O';
             this->provide_materials = false;
             break;
+        case 'p':
+            this->building_char = 'P';
+            this->provide_materials = false;
         default:
-            this->building_char = 'F';
-            this->provide_materials = true;
+            this->building_char = 'B';
+            this->provide_materials = false;
     }
 }
 
