@@ -1,0 +1,89 @@
+class Andypolis {
+ - Building** buildings
+ - Material** materials
+ - Map* map
+ - building_quantity : int 
+ - building_quantity_total : int 
+ - material_quantity : int 
+ + showBuiltBuildings() : void
+ + showBuildings() : void
+ + areCoordsOk(row_pos : unsigned int &, column_pos : unsigned int & ) : bool
+ + newBuilding() : void
+ + checkIfBuildingExistsByName(name : string) : int
+ + checkByMaterials(pos : int) : bool
+ + checkByMax(pos : int) : bool
+ + checkByMin(pos : int) : bool
+ + decreaseMaterials(pos : int) : void
+ + increaseMaterials(pos : int) : void
+ + newBuildingByName() : void
+ + deleteBuildingByCoords() : void
+ + showMap() : void
+ + checkMap() : void
+ + showInventory() : void
+ + colectResources() : void
+ + rainResources() : void
+ + addBuilding(building : Building*) : void
+ + addBuildingFromLocations(name : string) : char
+ + addMaterial(material : Material*) : void
+ + processBuildingsFile(filename : string) : void
+ + processMaterialsFile(filename : string) : void
+ + processLocationsFile(filename : string) : void
+ + getBuildingQuantity() : int
+ + getMaterialQuantity() : int
+ + getBuildingByPos(pos : int) : Building* 
+ + getMaterialByPos(pos : int) : Material* 
+ + saveChanges(path_materials : string, path_buildings : string, path_locations : string) : void
+ + setTotalBuilding(unsigned int quantity) : void
+ + saveBuildingsChanges(filename : string) : void
+ + saveMaterialsChanges(filename : string) : void
+ + saveMapChanges(filename_locations : string) : void
+}
+
+class Building {
+ - name : string 
+ - stone : unsigned int 
+ - wood : unsigned int 
+ - iron : unsigned int 
+ - quantity : unsigned int 
+ - max : unsigned int 
+ - building_char : char 
+ - provide_materials : bool 
+ + increaseQuantity() : void
+ + increaseQuantity(quantity : unsigned int) : void
+ + decreaseQuantity() : void
+ + decreaseQuantity(quantity : unsigned int) : void
+}
+
+class Interface {
+ + showMenu() : void
+ + getOption() : int 
+ + selectedOption(city : Andypolis&, answer : int) : void
+}
+
+class abstract Square {
+ # is_it_path : bool 
+ # is_it_terrain : bool 
+ # type_of_object : char 
+ # object_name : string
+ # square_type : char 
+ # square_name : string
+ + changeObject(object_name : string, type_of_object : char) : void
+ + emptySquare() : void
+}
+
+class LakeSquare {}
+class PathSquare {}
+class TerrainSquare {}
+
+class Material {
+ - name : string 
+ - quantity : unsigned int 
+ - material_char : char 
+ + getName() : string 
+ + getQuantity() : unsigned int 
+ + increaseQuantity() : void
+ + increaseQuantity(quantity : unsigned int) : void
+ + decreaseQuantity() : void
+ + decreaseQuantity(quantity : unsigned int) : void
+ + getChar() : void
+}
