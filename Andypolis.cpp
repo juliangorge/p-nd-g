@@ -146,7 +146,7 @@ void Andypolis:: newBuildingByName(){
     cin >> confirm;
 
     if(confirm == "Y" || confirm == "y"){
-        this->map->setSquareName(row_pos, column_pos, name, this->buildings[pos]->getBuildingChar());
+        this->map->setSquareName(row_pos, column_pos);
         this->buildings[pos]->increaseQuantity();
         decreaseMaterials(pos);
         cout << "Confirmado" << endl;
@@ -364,7 +364,9 @@ void Andypolis:: processLocationsFile(string filename){
 
         col_pos = stoi(col_aux);
         row_pos = stoi(aux_3);
-        this->map->setSquareName(row_pos, col_pos, name, addBuildingFromLocations(name));
+
+        addBuildingFromLocations(name);
+        this->map->setSquareName(row_pos, col_pos);
     }
 
     file.close();

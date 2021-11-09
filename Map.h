@@ -30,7 +30,7 @@ class Map
         void showMap();
         void showCoord(unsigned int row_pos, unsigned int col_pos);
         void saveChanges(string filename_locations, int building_quantity_total);
-        void setSquareName(unsigned int row_pos, unsigned int col_pos, string name, char building_char);
+        void setSquareName(unsigned int row_pos, unsigned int col_pos);
         void getSquareData(unsigned int row_pos, unsigned int col_pos);
         void emptySquare(unsigned int row_pos, unsigned int col_pos);
         string getNamefromCoods(unsigned int row_pos, unsigned int col_pos);

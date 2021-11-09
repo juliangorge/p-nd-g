@@ -6,26 +6,10 @@ using namespace std;
 
 TerrainSquare::TerrainSquare()
 {
-   this->square_type = 'T';
-   this->is_it_path = false;
-   this->is_it_terrain = true;
-   this->type_of_object = this->square_type;
-   this->square_name = "casillero construible";
-}
-
-char TerrainSquare::getTypeSquare()
-{
-   return this->square_type;
-}
-
-char TerrainSquare::getTypeObject()
-{
-	return this->type_of_object;
-}
-
-string TerrainSquare::getObjName()
-{
-	return this->object_name;
+	this->type_square = 'T';
+	this->is_it_path = false;
+	this->is_it_terrain = true;
+	this->square_name = "casillero construible";
 }
 
 bool TerrainSquare::isPath()
@@ -40,13 +24,15 @@ bool TerrainSquare::isTerrain()
 
 bool TerrainSquare::isSquareFree()
 {
-	return (this->square_type == this->type_of_object);
+	return (this->building == nullptr);
 }
-void TerrainSquare::changeObject(string object_name, char type_of_object)
-{
-	this->object_name = object_name;
-	this->type_of_object = type_of_object;
-	return;
+
+Building* TerrainSquare::getBuilding(){
+	return this->building;
+}
+
+Material* TerrainSquare::getMaterial(){
+	return this->material;
 }
 
 string TerrainSquare::getSquareName()
@@ -54,10 +40,22 @@ string TerrainSquare::getSquareName()
 	return this->square_name;
 }
 
+char TerrainSquare::getTypeSquare(){
+	return this->type_square;
+}
+
+void TerrainSquare::changeObject(){
+	if(isSquareFree()){
+		this->type_square = 'T';
+	}else{
+		this->type_square = this->building->getBuildingChar();
+	}
+}
+
+
 void TerrainSquare::emptySquare()
 {
-	this->object_name.clear();
-	this->type_of_object=this->square_type;
+	//this->object_name.clear();
 }
 
 TerrainSquare:: ~TerrainSquare(){

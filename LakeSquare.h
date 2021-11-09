@@ -7,14 +7,14 @@ class LakeSquare : public Square
     public:
         LakeSquare();
         ~LakeSquare();
-        char getTypeSquare();
-        char getTypeObject();
-        string getObjName();
-		bool isPath();
+        bool isPath();
         bool isTerrain();
         bool isSquareFree();
-        void changeObject(string object_name, char type_of_object);
+        Building* getBuilding();
+        Material* getMaterial();
         string getSquareName();
+        char getTypeSquare();
+        void changeObject();
         void emptySquare();
 };
 

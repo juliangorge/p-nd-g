@@ -6,26 +6,10 @@ using namespace std;
 
 PathSquare::PathSquare()
 {
-	this->square_type = 'C';
+	this->type_square = 'C';
 	this->is_it_path = true;
 	this->is_it_terrain = false;
-	this->type_of_object = this->square_type;
 	this->square_name = "casillero transitable";
-}
-
-char PathSquare::getTypeSquare()
-{
-  return this->square_type;
-}
-
-char PathSquare::getTypeObject()
-{
-	return this->type_of_object;
-}
-
-string PathSquare::getObjName()
-{
-	return this->object_name;
 }
 
 bool PathSquare::isPath()
@@ -40,13 +24,15 @@ bool PathSquare::isTerrain()
 
 bool PathSquare::isSquareFree()
 {
-	return this->square_type == this->type_of_object;
+	return (this->building == nullptr);
 }
-void PathSquare::changeObject(string object_name, char type_of_object)
-{
-	this->object_name = object_name;
-	this->type_of_object = type_of_object;
-	return;
+
+Building* PathSquare::getBuilding(){
+	return this->building;
+}
+
+Material* PathSquare::getMaterial(){
+	return this->material;
 }
 
 string PathSquare::getSquareName()
@@ -54,12 +40,17 @@ string PathSquare::getSquareName()
 	return this->square_name;
 }
 
-void PathSquare::emptySquare()
-{
-	this->square_name.clear();
-	this->type_of_object=this->square_type;
+char PathSquare::getTypeSquare(){
+	return this->type_square;
 }
 
+void PathSquare::changeObject(){
+}
+
+void PathSquare::emptySquare()
+{
+	//this->square_name.clear();
+}
 
 PathSquare::~PathSquare(){
 }

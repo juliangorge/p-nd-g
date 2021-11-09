@@ -119,7 +119,7 @@ void Map::showMap()
     {
         for (unsigned int j = 0; j < this->columns; j++)
         {
-            cout << this->squares[i][j]->getTypeObject() << " ";
+            cout << this->squares[i][j]->getTypeSquare() << " ";
         }
         cout << endl;
     }
@@ -141,7 +141,7 @@ void Map::saveChanges(string filename_locations, int building_quantity_total){
         {
 
             if(!this->squares[i][j]->isSquareFree()){
-                file_locations << this->squares[i][j]->getObjName() << " (" << i << ", " << j << ")";
+                file_locations << this->squares[i][j]->getBuilding()->getName() << " (" << i << ", " << j << ")";
 
                 building_quantity_aux++;
                 if(building_quantity_aux < building_quantity_total) file_locations << '\n';
@@ -157,8 +157,8 @@ void Map::saveChanges(string filename_locations, int building_quantity_total){
     file_locations.close();
 }
 
-void Map::setSquareName(unsigned int row_pos, unsigned int col_pos, string name, char building_char){
-    this->squares[row_pos][col_pos]->changeObject(name, building_char);
+void Map::setSquareName(unsigned int row_pos, unsigned int col_pos){
+    this->squares[row_pos][col_pos]->changeObject();
     return;
 }
 
@@ -169,7 +169,7 @@ void Map::getSquareData(unsigned int row_pos, unsigned int col_pos)
         cout << "Soy un " << squares[row_pos][col_pos]->getSquareName() << " y me encuentro vacio" << endl;
         return;
     }
-    cout << "Soy " << squares[row_pos][col_pos]->getObjName() << " y estoy en las coordenadas " << "(" << row_pos << "," << col_pos << ")" << endl;
+    cout << "Soy " << squares[row_pos][col_pos]->getBuilding()->getName() << " y estoy en las coordenadas " << "(" << row_pos << "," << col_pos << ")" << endl;
     return;
 
 }
@@ -181,5 +181,5 @@ void Map::emptySquare(unsigned int row_pos, unsigned int col_pos)
 }
 
 string Map::getNamefromCoods(unsigned int row_pos, unsigned int col_pos){
-    return this->squares[row_pos][col_pos]->getObjName();
+    return this->squares[row_pos][col_pos]->getBuilding()->getName();
 }
