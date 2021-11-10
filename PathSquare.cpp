@@ -10,6 +10,7 @@ PathSquare::PathSquare()
 	this->is_it_path = true;
 	this->is_it_terrain = false;
 	this->square_name = "casillero transitable";
+	this->building = nullptr;
 }
 
 bool PathSquare::isPath()

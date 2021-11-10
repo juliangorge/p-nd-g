@@ -10,6 +10,7 @@ LakeSquare::LakeSquare()
 	this->is_it_path = false;
     this->is_it_terrain = false;
     this->square_name = "casillero con agua";
+	this->building = nullptr;
 }
 
 bool LakeSquare::isPath()

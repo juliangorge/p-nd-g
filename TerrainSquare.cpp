@@ -10,6 +10,7 @@ TerrainSquare::TerrainSquare()
 	this->is_it_path = false;
 	this->is_it_terrain = true;
 	this->square_name = "casillero construible";
+	this->building = nullptr;
 }
 
 bool TerrainSquare::isPath()

@@ -1,3 +1,0 @@
-madera 135
-metal 1040
-piedra 1180
