@@ -60,7 +60,8 @@ void TerrainSquare::changeObject(){
 
 void TerrainSquare::emptySquare()
 {
-	//this->object_name.clear();
+	this->building = nullptr;
+	changeObject();
 }
 
 TerrainSquare:: ~TerrainSquare(){

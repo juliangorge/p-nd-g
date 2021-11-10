@@ -177,6 +177,10 @@ void Map::setObject(unsigned row_pos, unsigned column_pos, Building* building){
     this->squares[row_pos][column_pos]->setBuilding(building);
 }
 
+void Map::getEmptySquare(unsigned int row_pos, unsigned int column_pos){
+    this->squares[row_pos][column_pos]->emptySquare();
+}
+
 void Map::getSquareData(unsigned int row_pos, unsigned int column_pos)
 {
     if(this->squares[row_pos][column_pos]->isFreeSquare()){

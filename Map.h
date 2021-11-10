@@ -31,7 +31,8 @@ class Map
         string printCoordsByName(string name);
         void showCoord(unsigned int row_pos, unsigned int column_pos);
         void saveChanges(string filename_locations, int building_quantity_total);
-        void setObject(unsigned row_pos, unsigned column_pos, Building* building);
+        void setObject(unsigned int row_pos, unsigned int column_pos, Building* building);
+        void getEmptySquare(unsigned int row_pos, unsigned int column_pos);
         void getSquareData(unsigned int row_pos, unsigned int column_pos);
         void emptySquare(unsigned int row_pos, unsigned int column_pos);
         string getNamefromCoords(unsigned int row_pos, unsigned int column_pos);
