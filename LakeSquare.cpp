@@ -44,6 +44,9 @@ char LakeSquare::getTypeSquare(){
 	return this->type_square;
 }
 
+void LakeSquare::setBuilding(Building* building){
+}
+
 void LakeSquare::changeObject(){
 }
 

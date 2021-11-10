@@ -42,8 +42,6 @@ void Andypolis:: showBuildings(){
     cout << "======================" << endl << endl;
 }
 
-
-
 int Andypolis:: checkIfBuildingExistsByName(string name){
     bool exists = false;
     int pos = -1, i = 0;
@@ -114,7 +112,6 @@ void Andypolis:: increaseMaterials(int pos){
     }
 }
 
-
 void Andypolis:: newBuildingByName(){
     string name, building_char, confirm;
     int pos;
@@ -146,9 +143,10 @@ void Andypolis:: newBuildingByName(){
     cin >> confirm;
 
     if(confirm == "Y" || confirm == "y"){
-        this->map->setSquareName(row_pos, column_pos);
+        this->map->setObject(row_pos, column_pos, this->buildings[pos]);
         this->buildings[pos]->increaseQuantity();
         decreaseMaterials(pos);
+
         cout << "Confirmado" << endl;
     }else{
         cout << "Cancelado" << endl;
@@ -274,9 +272,11 @@ void Andypolis:: addBuilding(Building* building){
 
 }
 
-char Andypolis:: addBuildingFromLocations(string name){
+char Andypolis:: addBuildingFromLocations(unsigned int row_pos, unsigned int column_pos, string name){
     int pos = checkIfBuildingExistsByName(name);
-    
+
+    this->map->setObject(row_pos, column_pos, this->buildings[pos]);
+
     this->buildings[pos]->increaseQuantity();
 
     return this->buildings[pos]->getBuildingChar();
@@ -342,7 +342,7 @@ void Andypolis:: processLocationsFile(string filename){
     ifstream file(filename);
 
     string aux_3, aux, coords, row_aux, col_aux, name;
-    unsigned int row_pos, col_pos;
+    unsigned int row_pos, column_pos;
 
     while(file >> name){
         file >> aux;
@@ -362,11 +362,11 @@ void Andypolis:: processLocationsFile(string filename){
             }
         }
 
-        col_pos = stoi(col_aux);
+        column_pos = stoi(col_aux);
         row_pos = stoi(aux_3);
 
-        addBuildingFromLocations(name);
-        this->map->setSquareName(row_pos, col_pos);
+        addBuildingFromLocations(row_pos, column_pos, name);
+        //this->map->setSquareName(row_pos, column_pos);
     }
 
     file.close();

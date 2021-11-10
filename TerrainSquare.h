@@ -14,6 +14,7 @@ class TerrainSquare : public Square
         Material* getMaterial();
         string getSquareName();
         char getTypeSquare();
+        void setBuilding(Building* building);
         void changeObject();
         void emptySquare();
 };

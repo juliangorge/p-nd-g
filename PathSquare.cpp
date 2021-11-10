@@ -44,6 +44,9 @@ char PathSquare::getTypeSquare(){
 	return this->type_square;
 }
 
+void PathSquare::setBuilding(Building* building){
+}
+
 void PathSquare::changeObject(){
 }
 

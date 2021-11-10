@@ -35,11 +35,11 @@ void Map::readMap()
 
         this->squares[row_pos] = new Square*[this->columns];
 
-        for (unsigned int col_pos = 0; col_pos < this->columns; col_pos++)
+        for (unsigned int column_pos = 0; column_pos < this->columns; column_pos++)
         {
 
             file >> square_type;
-            this->loadMap(row_pos,col_pos,square_type);
+            this->loadMap(row_pos,column_pos,square_type);
 
         }
     }
@@ -48,20 +48,20 @@ void Map::readMap()
 
 }
 
-void Map::loadMap(unsigned int row_pos, unsigned int col_pos, char square_type)
+void Map::loadMap(unsigned int row_pos, unsigned int column_pos, char square_type)
 {
     switch(square_type)
     {
         case 'T':
-            this->squares[row_pos][col_pos] = new TerrainSquare();
+            this->squares[row_pos][column_pos] = new TerrainSquare();
             break;
 
         case 'C':
-            this->squares[row_pos][col_pos] = new PathSquare();
+            this->squares[row_pos][column_pos] = new PathSquare();
             break;
 
         case 'L':
-            this->squares[row_pos][col_pos] = new LakeSquare();
+            this->squares[row_pos][column_pos] = new LakeSquare();
             break;
     }
 }
@@ -125,9 +125,9 @@ void Map::showMap()
     }
 }
 
-void Map::showCoord(unsigned int row_pos, unsigned int col_pos)
+void Map::showCoord(unsigned int row_pos, unsigned int column_pos)
 {
-    cout << "Ese casillero es: " << this->squares[row_pos][col_pos]->getTypeSquare() << endl;
+    cout << "Ese casillero es: " << this->squares[row_pos][column_pos]->getTypeSquare() << endl;
 }
 
 void Map::saveChanges(string filename_locations, int building_quantity_total){
@@ -157,29 +157,27 @@ void Map::saveChanges(string filename_locations, int building_quantity_total){
     file_locations.close();
 }
 
-void Map::setSquareName(unsigned int row_pos, unsigned int col_pos){
-    this->squares[row_pos][col_pos]->changeObject();
-    return;
+void Map::setObject(unsigned row_pos, unsigned column_pos, Building* building){
+    this->squares[row_pos][column_pos]->setBuilding(building);
 }
 
-
-void Map::getSquareData(unsigned int row_pos, unsigned int col_pos)
+void Map::getSquareData(unsigned int row_pos, unsigned int column_pos)
 {
-    if(this->squares[row_pos][col_pos]->isSquareFree()){
-        cout << "Soy un " << squares[row_pos][col_pos]->getSquareName() << " y me encuentro vacio" << endl;
+    if(this->squares[row_pos][column_pos]->isSquareFree()){
+        cout << "Soy un " << squares[row_pos][column_pos]->getSquareName() << " y me encuentro vacio" << endl;
         return;
     }
-    cout << "Soy " << squares[row_pos][col_pos]->getBuilding()->getName() << " y estoy en las coordenadas " << "(" << row_pos << "," << col_pos << ")" << endl;
+    cout << "Soy " << squares[row_pos][column_pos]->getBuilding()->getName() << " y estoy en las coordenadas " << "(" << row_pos << "," << column_pos << ")" << endl;
     return;
 
 }
 
-void Map::emptySquare(unsigned int row_pos, unsigned int col_pos)
+void Map::emptySquare(unsigned int row_pos, unsigned int column_pos)
 {
-    this->squares[row_pos][col_pos]->emptySquare();
+    this->squares[row_pos][column_pos]->emptySquare();
     return;
 }
 
-string Map::getNamefromCoods(unsigned int row_pos, unsigned int col_pos){
-    return this->squares[row_pos][col_pos]->getBuilding()->getName();
+string Map::getNamefromCoods(unsigned int row_pos, unsigned int column_pos){
+    return this->squares[row_pos][column_pos]->getBuilding()->getName();
 }

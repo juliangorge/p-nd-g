@@ -44,6 +44,11 @@ char TerrainSquare::getTypeSquare(){
 	return this->type_square;
 }
 
+void TerrainSquare::setBuilding(Building* building){
+	this->building = building;
+	changeObject();
+}
+
 void TerrainSquare::changeObject(){
 	if(isSquareFree()){
 		this->type_square = 'T';

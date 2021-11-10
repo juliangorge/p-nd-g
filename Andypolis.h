@@ -106,7 +106,7 @@ class Andypolis {
 
         // PRE: Recibe nombre de la construccion
         // POST: Retorna building_char
-        char addBuildingFromLocations(string name);
+        char addBuildingFromLocations(unsigned int row_pos, unsigned int column_pos, string name);
 
         // PRE: Recibe un objeto Material.
         // POST: Ingresa el objeto en un array dinámico.

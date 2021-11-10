@@ -36,6 +36,7 @@ class Square
         virtual Material* getMaterial() = 0;
         virtual string getSquareName() = 0;
         virtual char getTypeSquare() = 0;
+        virtual void setBuilding(Building* building) = 0;
         virtual void changeObject() = 0;
         virtual void emptySquare() = 0;
 };
