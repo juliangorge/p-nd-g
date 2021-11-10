@@ -11,6 +11,7 @@ LakeSquare::LakeSquare()
     this->is_it_terrain = false;
     this->square_name = "casillero con agua";
 	this->building = nullptr;
+	this->material = nullptr;
 }
 
 bool LakeSquare::isPath()
@@ -48,12 +49,15 @@ char LakeSquare::getTypeSquare(){
 void LakeSquare::setBuilding(Building* building){
 }
 
+void LakeSquare::setMaterial(Material* material){
+}
+
 void LakeSquare::changeObject(){
 }
 
-void LakeSquare::emptySquare()
-{
-	//this->square_name.clear();
+void LakeSquare::emptySquare(){
+	this->building = nullptr;
+	changeObject();
 }
 
 LakeSquare:: ~LakeSquare(){

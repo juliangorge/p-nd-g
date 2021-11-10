@@ -19,6 +19,10 @@ unsigned int Material:: getQuantity(){
     return this->quantity;
 }
 
+char Material:: getMaterialChar(){
+    return this->material_char;
+}
+
 void Material:: increaseQuantity(){
     this->quantity++;
 }

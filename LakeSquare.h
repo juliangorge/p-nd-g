@@ -15,6 +15,7 @@ class LakeSquare : public Square
         string getSquareName();
         char getTypeSquare();
         void setBuilding(Building* building);
+        void setMaterial(Material* material);
         void changeObject();
         void emptySquare();
 };

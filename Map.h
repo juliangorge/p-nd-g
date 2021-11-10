@@ -16,6 +16,7 @@ class Map
     private:
         unsigned int rows;
         unsigned int columns;
+        unsigned int path_square_quantity;
         Square*** squares;
 
     public:
@@ -30,6 +31,8 @@ class Map
         void showMap();
         string printCoordsByName(string name);
         void showCoord(unsigned int row_pos, unsigned int column_pos);
+        unsigned int getPathSquareQuantity();
+        void addMaterialToRandomPathSquares(Square** path_squares, Material* material, int material_quantity);
         void saveChanges(string filename_locations, int building_quantity_total);
         void setObject(unsigned int row_pos, unsigned int column_pos, Building* building);
         void getEmptySquare(unsigned int row_pos, unsigned int column_pos);

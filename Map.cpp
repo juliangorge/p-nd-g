@@ -12,6 +12,7 @@ Map::Map()
     this->rows = 0;
     this->columns = 0;
     this->squares = nullptr;
+    this->path_square_quantity = 0;
     this->readMap();
 }
 
@@ -62,6 +63,7 @@ void Map::loadMap(unsigned int row_pos, unsigned int column_pos, char square_typ
             break;
 
         case 'C':
+            this->path_square_quantity++;
             this->squares[row_pos][column_pos] = new PathSquare();
             break;
 
@@ -151,6 +153,31 @@ string Map::printCoordsByName(string name){
 void Map::showCoord(unsigned int row_pos, unsigned int column_pos)
 {
     cout << "Ese casillero es: " << this->squares[row_pos][column_pos]->getTypeSquare() << endl;
+}
+
+unsigned int Map:: getPathSquareQuantity(){
+    return this->path_square_quantity;
+}
+
+void Map:: addMaterialToRandomPathSquares(Square** path_squares, Material* material, int material_quantity){
+    int path_square_pos = 0;
+    
+    for (unsigned int i = 0; i < this->rows; i++){
+        for (unsigned int j = 0; j < this->columns; j++){
+            if(this->squares[i][j]->isPath()){
+                path_squares[path_square_pos] = this->squares[i][j];
+                path_square_pos++;
+            }
+        }
+    }
+
+    for (int i = 0; i < material_quantity; i++){
+        int random_path_square = rand() % (int) (this->path_square_quantity - 1) + 0;
+        if(path_squares[random_path_square]->isFreeSquare()){
+            path_squares[random_path_square]->setMaterial(material);
+        }
+    }
+
 }
 
 void Map::saveChanges(string filename_locations, int building_quantity_total){

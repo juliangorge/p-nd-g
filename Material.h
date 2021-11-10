@@ -50,8 +50,12 @@ class Material {
         void decreaseQuantity(unsigned int quantity);
 
         // PRE: 
-        // POST: Retorna el valor valido
+        // POST: Establece el valor valido para dicho material
         void getChar();
+
+        // PRE:
+        // POST: Retorna el caracter del material.
+        char getMaterialChar();
 };
 
 #endif

@@ -11,6 +11,7 @@ PathSquare::PathSquare()
 	this->is_it_terrain = false;
 	this->square_name = "casillero transitable";
 	this->building = nullptr;
+	this->material = nullptr;
 }
 
 bool PathSquare::isPath()
@@ -25,7 +26,7 @@ bool PathSquare::isTerrain()
 
 bool PathSquare::isFreeSquare()
 {
-	return (this->building == nullptr);
+	return (this->material == nullptr);
 }
 
 Building* PathSquare::getBuilding(){
@@ -48,12 +49,22 @@ char PathSquare::getTypeSquare(){
 void PathSquare::setBuilding(Building* building){
 }
 
-void PathSquare::changeObject(){
+void PathSquare::setMaterial(Material* material){
+	this->material = material;
+	changeObject();
 }
 
-void PathSquare::emptySquare()
-{
-	//this->square_name.clear();
+void PathSquare::changeObject(){
+	if(isFreeSquare()){
+		this->type_square = 'C';
+	}else{
+		this->type_square = this->material->getMaterialChar();
+	}
+}
+
+void PathSquare::emptySquare(){
+	this->building = nullptr;
+	changeObject();
 }
 
 PathSquare::~PathSquare(){

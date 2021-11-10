@@ -11,6 +11,7 @@ TerrainSquare::TerrainSquare()
 	this->is_it_terrain = true;
 	this->square_name = "casillero construible";
 	this->building = nullptr;
+	this->material = nullptr;
 }
 
 bool TerrainSquare::isPath()
@@ -48,6 +49,9 @@ char TerrainSquare::getTypeSquare(){
 void TerrainSquare::setBuilding(Building* building){
 	this->building = building;
 	changeObject();
+}
+
+void TerrainSquare::setMaterial(Material* material){
 }
 
 void TerrainSquare::changeObject(){

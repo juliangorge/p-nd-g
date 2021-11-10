@@ -10,15 +10,15 @@ const int THIRD_POS = 2;
 using namespace std;
 
 // PRE:
-// POST: 
+// POST: Muestra las opciones de menu
 void showMenu();
 
 // PRE:
-// POST: 
+// POST: Se solicita el ingreso de la opcion
 int getOption();
 
-// PRE:
-// POST: 
+// PRE: Recibe city y la respuesta
+// POST: Se ejecuta la opcion seleccionada
 void selectedOption(Andypolis& city, int answer);
 
 #endif //INTERFACE_H

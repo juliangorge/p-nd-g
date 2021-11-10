@@ -29,6 +29,38 @@ class Andypolis {
         // POST: Destruye un objeto Andypolis.
         ~Andypolis();
 
+        // PRE: Recibe una ruta de archivo valida.
+        // POST: Guarda cada linea en un objeto Building.
+        void processBuildingsFile(string filename);
+
+        // PRE: Recibe una ruta de archivo valida.
+        // POST: Guarda cada linea en un objeto Material.
+        void processMaterialsFile(string filename);
+
+        // PRE: Recibe una ruta de archivo valida.
+        // POST: Guarda cada linea en un objeto Location.
+        void processLocationsFile(string filename);
+
+        // PRE: Recibe un objeto Building.
+        // POST: Ingresa el objeto en un array dinámico.
+        void addBuilding(Building* building);
+
+        // PRE: Recibe coordenadas y el nombre de la construccion
+        // POST: Retorna su building_char
+        char addBuildingFromLocations(unsigned int row_pos, unsigned int column_pos, string name);
+
+        // PRE: Recibe un objeto Material.
+        // POST: Ingresa el objeto en un array dinámico.
+        void addMaterial(Material* material);
+
+        // PRE:
+        // POST: Retorna la cantidad de Edificios.
+        int getBuildingQuantity();
+
+        // PRE:
+        // POST: Retorna la cantidad de Materiales.
+        int getMaterialQuantity();
+
         // PRE:
         // POST: Imprime una lista de Edificios construidos en pantalla.
         void showBuiltBuildings();
@@ -37,13 +69,9 @@ class Andypolis {
         // POST: Imprime una lista de Edificios en pantalla.
         void showBuildings();
 
-        // PRE: Recibe fila y columna
-        // POST: Retorna true si esta disponible.
-        bool areCoordsOk(unsigned int & row_pos, unsigned int & column_pos);
-
         // PRE:
-        // POST: Consulta el edificio por nombre y incrementa en 1 unidad.
-        void newBuilding();
+        // POST: Genera un nuevo Edificio por nombre
+        void newBuildingByName();
 
         // PRE:
         // POST: Consulta por pantalla el nombre del Edificio y si existe retorna su posicion, de lo contrario -1.
@@ -58,10 +86,6 @@ class Andypolis {
         bool checkByMax(int pos);
 
         // PRE: Recibe una posicion valida.
-        // POST: Retorna TRUE si hay al menos un Edificio construido
-        bool checkByMin(int pos);
-
-        // PRE: Recibe una posicion valida.
         // POST: Disminuye la cantidad de materiales en base a los materiales del Edificio de la posicion ingresada.
         void decreaseMaterials(int pos);
 
@@ -70,66 +94,29 @@ class Andypolis {
         void increaseMaterials(int pos);
 
         // PRE:
-        // POST:
-        void newBuildingByName();
-
-        // PRE:
-        // POST:
-        void deleteBuildingByCoords();
-
-        // PRE:
-        // POST:
+        // POST: Muestra el Mapa en pantalla
         void showMap();
 
         // PRE:
-        // POST:
-        void checkMap();
+        // POST: Resuelve si las coordenadas son validas
+        void checkCoords();
 
         // PRE:
         // POST: Imprime una lista de Materiales en pantalla.
         void showInventory();
 
+        // PRE: Recibe nombre del material y posicion
+        // POST: Incrementa la cantidad de materiales
+        void recolectByMaterial(string material, int j);
+
         // PRE:
-        // POST:
+        // POST: Si hay un edificio construido recolecta ciertos materiales
         void colectResources();
 
         // PRE:
         // POST:
         void rainResources();
-
-
-        // PRE: Recibe un objeto Building.
-        // POST: Ingresa el objeto en un array dinámico.
-        void addBuilding(Building* building);
-
-        // PRE: Recibe nombre de la construccion
-        // POST: Retorna building_char
-        char addBuildingFromLocations(unsigned int row_pos, unsigned int column_pos, string name);
-
-        // PRE: Recibe un objeto Material.
-        // POST: Ingresa el objeto en un array dinámico.
-        void addMaterial(Material* material);
-
-        // PRE: Recibe una ruta de archivo valida.
-        // POST: Guarda cada linea en un objeto Building.
-        void processBuildingsFile(string filename);
-
-        // PRE: Recibe una ruta de archivo valida.
-        // POST: Guarda cada linea en un objeto Material.
-        void processMaterialsFile(string filename);
-
-        // PRE: Recibe una ruta de archivo valida.
-        // POST: Guarda cada linea en un objeto Location.
-        void processLocationsFile(string filename);
-
-        // PRE:
-        // POST: Retorna la cantidad de Edificios.
-        int getBuildingQuantity();
-
-        // PRE:
-        // POST: Retorna la cantidad de Materiales.
-        int getMaterialQuantity();
-
+        
         // PRE: Recibe una posicion valida.
         // POST: Retorna un objeto Building segun su posicion.
         Building* getBuildingByPos(int pos);
@@ -140,7 +127,13 @@ class Andypolis {
 
         void saveChanges(string path_materials, string path_locations);
 
+        // PRE:
+        // POST: Aumenta la cantidad de Edificios totales (cantidad*edificio)
         void setTotalBuilding();
+
+        // PRE: 
+        // POST: Recibe coordenadas por parametro y elimina el Edificio
+        void deleteBuildingByCoords();
 
         // PRE: Recibe una ruta de archivo valida.
         // POST: Guarda en dicho archivo todos los cambios producidos en el objeto Building,
@@ -148,12 +141,17 @@ class Andypolis {
         // nombre_edificio piedra madera metal cantidad_construidos máxima_cantidad_permitidos.
         void deleteBuildings();
 
+
         // PRE: Recibe una ruta de archivo valida.
         // POST: Guarda en dicho archivo todos los cambios producidos en el objeto Material,
         // Siguiendo el formato:
         // nombre_material cantidad_material.
         void saveMaterialsChanges(string filename);
 
+        // PRE: Recibe una ruta de archivo valida
+        // POST: Guarda en dicho archivo todos los cambios producidos en Square Terrain
+        // Siguiendo el formato:
+        // nombre (coordenada_x, coordenada_y)
         void saveLocationChanges(string filename_locations);
 
 };

@@ -23,6 +23,7 @@ int main()
     city.processLocationsFile(PATH_LOCATIONS);
 
     // Mostrar menu
+    cout << "Bienvenido!" << endl;
     showMenu();
     int answer = getOption();
 
@@ -34,6 +35,7 @@ int main()
 
     // Guardar cambio
     city.saveChanges(PATH_MATERIALS, PATH_LOCATIONS);
+    cout << "Gracias!" << endl;
 
     return 0;
 }
