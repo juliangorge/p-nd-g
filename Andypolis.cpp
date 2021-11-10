@@ -10,7 +10,7 @@ Andypolis:: Andypolis(){
     this->building_quantity = 0;
     this->building_quantity_total = 0;
     this->material_quantity = 0;
-    //this->map = new Map();
+    this->map = new Map();
 }
 
 void Andypolis:: showBuiltBuildings(){
@@ -28,15 +28,13 @@ void Andypolis:: showBuiltBuildings(){
 
 void Andypolis:: showBuildings(){
     cout << endl << "======================" << endl << endl;
-    //cout << "    Edificios | Piedra | Madera | Metal | Construidos | Cant. permitida" << endl;
+    cout << "    Edificios | Piedra | Madera | Metal | Construidos | Cant. permitida" << endl;
 
     for(int i = 0; i < this->building_quantity; i++){
         cout << "-> " << (i+1) << ": " << this->buildings[i]->getName() << endl;
         cout << " | Piedra req = " <<this->buildings[i]->getStone() << " | Madera req = " << this->buildings[i]->getWood() << " | Metal req = " 
              << this->buildings[i]->getIron() << " | Construidos= " << this->buildings[i]->getQuantity() << " | Construcciones posibles = " 
              << this->buildings[i]->getMax() - this->buildings[i]->getQuantity()<< endl;
-         
-        //cout << "Construidos: " << this->buildings[i]->getQuantity() << " (" << (this->buildings[i]->getMax() - this->buildings[i]->getQuantity()) << " para el maximo permitido) " << endl;
     cout << endl;
     }
     cout << "======================" << endl << endl;
@@ -267,23 +265,14 @@ void Andypolis:: addBuilding(Building* building){
 
     new_buildings[prev_building_quantity] = building;
 
-    if(this->building_quantity != 0) delete[] this->buildings;
+    if(this->building_quantity != 0){
+        delete[] this->buildings;
+    }
 
     this->buildings = new_buildings;
     this->building_quantity++;
 
 }
-
-char Andypolis:: addBuildingFromLocations(unsigned int row_pos, unsigned int column_pos, string name){
-    int pos = checkIfBuildingExistsByName(name);
-
-    this->map->setObject(row_pos, column_pos, this->buildings[pos]);
-
-    this->buildings[pos]->increaseQuantity();
-
-    return this->buildings[pos]->getBuildingChar();
-}
-
 void Andypolis:: addMaterial(Material* material){
     int prev_material_quantity = this->material_quantity;
 
@@ -302,6 +291,18 @@ void Andypolis:: addMaterial(Material* material){
     this->materials = new_materials;
     this->material_quantity++;
 }
+
+char Andypolis:: addBuildingFromLocations(unsigned int row_pos, unsigned int column_pos, string name){
+    int pos = checkIfBuildingExistsByName(name);
+
+    this->map->setObject(row_pos, column_pos, this->buildings[pos]);
+
+    this->buildings[pos]->increaseQuantity();
+
+    return this->buildings[pos]->getBuildingChar();
+}
+
+
 
 void Andypolis:: processBuildingsFile(string filename){
     ifstream file(filename);
@@ -368,7 +369,6 @@ void Andypolis:: processLocationsFile(string filename){
         row_pos = static_cast<unsigned int>(stoul(row_number));
 
         addBuildingFromLocations(row_pos, column_pos, name);
-        //this->map->setSquareName(row_pos, column_pos);
     }
 
     file.close();
@@ -391,9 +391,9 @@ Material* Andypolis:: getMaterialByPos(int pos){
 }
 
 void Andypolis:: saveChanges(string path_materials, string path_locations){
-    //saveLocationChanges(path_locations);
+    saveLocationChanges(path_locations);
     deleteBuildings();
-    //saveMaterialsChanges(path_materials);
+    saveMaterialsChanges(path_materials);
 }
 
 void Andypolis:: setTotalBuilding(){
@@ -405,16 +405,17 @@ void Andypolis:: setTotalBuilding(){
 void Andypolis:: deleteBuildings(){
     for (int i = 0; i < this->building_quantity; i++){
         delete this->buildings[i];
+        this->buildings[i] = nullptr;
     }
-    this->buildings = nullptr;
+    
 }
 
 void Andypolis:: saveMaterialsChanges(string filename){
     ofstream file(filename);
 
     for (int i = 0; i < this->material_quantity; i++){
-        //file << this->materials[i]->getName() << " " << this->materials[i]->getQuantity() << '\n';
-        //delete this->materials[i];
+        file << this->materials[i]->getName() << " " << this->materials[i]->getQuantity() << '\n';
+        delete this->materials[i];
     }
 	file.close();
 }
@@ -422,11 +423,10 @@ void Andypolis:: saveMaterialsChanges(string filename){
 void Andypolis:: saveLocationChanges(string filename_locations){
     setTotalBuilding();
     this->map->saveChanges(filename_locations, this->building_quantity_total);
-    //delete this->map;
 }
 
 Andypolis:: ~Andypolis(){
-    //delete this->map;
-    //delete [] this->buildings;
-    //delete [] this->materials;
+    delete this->map;
+    delete [] this->buildings;
+    delete [] this->materials;
 }

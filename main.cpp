@@ -19,18 +19,18 @@ int main()
     
     // Lectura de archivo
     city.processBuildingsFile(PATH_BUILDINGS);
-    //city.processMaterialsFile(PATH_MATERIALS);
-    //city.processLocationsFile(PATH_LOCATIONS);
+    city.processMaterialsFile(PATH_MATERIALS);
+    city.processLocationsFile(PATH_LOCATIONS);
 
     // Mostrar menu
-    /*showMenu();
+    showMenu();
     int answer = getOption();
 
     while(answer != EXIT_OPTION){
         selectedOption(city, answer);
         showMenu();
         answer = getOption();
-    }*/
+    }
 
     // Guardar cambio
     city.saveChanges(PATH_MATERIALS, PATH_LOCATIONS);

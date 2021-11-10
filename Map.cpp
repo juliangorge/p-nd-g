@@ -12,7 +12,7 @@ Map::Map()
     this->rows = 0;
     this->columns = 0;
     this->squares = nullptr;
-    //this->readMap();
+    this->readMap();
 }
 
 Map::~Map(){
@@ -154,18 +154,18 @@ void Map::showCoord(unsigned int row_pos, unsigned int column_pos)
 }
 
 void Map::saveChanges(string filename_locations, int building_quantity_total){
-    //ofstream file_locations(filename_locations);
+    ofstream file_locations(filename_locations);
 
-    //int building_quantity_aux = 0;
+    int building_quantity_aux = 0;
     for (unsigned int i = 0; i < this->rows; i++)
     {
         for (unsigned int j = 0; j < this->columns; j++)
         {
-            /*if(!this->squares[i][j]->isFreeSquare()){
+            if(!this->squares[i][j]->isFreeSquare()){
                 file_locations << this->squares[i][j]->getBuilding()->getName() << " (" << i << ", " << j << ")";
                 building_quantity_aux++;
                 if(building_quantity_aux < building_quantity_total) file_locations << '\n';
-            }*/
+            }
 
             delete this->squares[i][j];
         }
@@ -174,7 +174,7 @@ void Map::saveChanges(string filename_locations, int building_quantity_total){
     }
 
     delete [] this->squares;
-    //file_locations.close();
+    file_locations.close();
 }
 
 void Map::setObject(unsigned row_pos, unsigned column_pos, Building* building){
