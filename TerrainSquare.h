@@ -9,7 +9,7 @@ class TerrainSquare : public Square
         ~TerrainSquare();
         bool isPath();
 		bool isTerrain();
-        bool isSquareFree();
+        bool isFreeSquare();
         Building* getBuilding();
         Material* getMaterial();
         string getSquareName();

@@ -31,7 +31,7 @@ class Square
         virtual ~Square() {};
         virtual bool isPath() = 0;
         virtual bool isTerrain() = 0;
-        virtual bool isSquareFree() = 0;
+        virtual bool isFreeSquare() = 0;
         virtual Building* getBuilding() = 0;
         virtual Material* getMaterial() = 0;
         virtual string getSquareName() = 0;

@@ -22,7 +22,7 @@ bool PathSquare::isTerrain()
 	return this->is_it_terrain;
 }
 
-bool PathSquare::isSquareFree()
+bool PathSquare::isFreeSquare()
 {
 	return (this->building == nullptr);
 }

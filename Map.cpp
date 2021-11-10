@@ -90,7 +90,7 @@ bool Map::checkTerrainSquare(unsigned int row_pos, unsigned int column_pos)
     	cout << "El casillero elegido no es terreno construible" << endl;
     	return false;
     }
-    if(!this->squares[row_pos][column_pos]->isSquareFree()){
+    if(!this->squares[row_pos][column_pos]->isFreeSquare()){
     	cout << "El casillero elegido está ocupado" << endl;
     	return false;
     } 
@@ -103,7 +103,7 @@ bool Map::checkTerrainBuilding(unsigned int row_pos, unsigned int column_pos)
         cout << "El casillero elegido no es terreno construible" << endl;
         return false;
     }
-    if(this->squares[row_pos][column_pos]->isSquareFree()){
+    if(this->squares[row_pos][column_pos]->isFreeSquare()){
         cout << "El casillero esta vacío" << endl;
         return false;
     } 
@@ -125,6 +125,24 @@ void Map::showMap()
     }
 }
 
+string Map::printCoordsByName(string name){
+    string aux;
+    for (unsigned int i = 0; i < this->rows; i++)
+    {
+        for (unsigned int j = 0; j < this->columns; j++)
+        {
+            if(!this->squares[i][j]->isFreeSquare()){
+                if(this->squares[i][j]->getBuilding()->getName() == name){
+                    aux += "(" + to_string(i) + "," + to_string(j) + ") ";
+                }
+            }
+        }
+    }
+
+    return aux;
+}
+        
+
 void Map::showCoord(unsigned int row_pos, unsigned int column_pos)
 {
     cout << "Ese casillero es: " << this->squares[row_pos][column_pos]->getTypeSquare() << endl;
@@ -140,7 +158,7 @@ void Map::saveChanges(string filename_locations, int building_quantity_total){
         for (unsigned int j = 0; j < this->columns; j++)
         {
 
-            if(!this->squares[i][j]->isSquareFree()){
+            if(!this->squares[i][j]->isFreeSquare()){
                 file_locations << this->squares[i][j]->getBuilding()->getName() << " (" << i << ", " << j << ")";
 
                 building_quantity_aux++;
@@ -163,7 +181,7 @@ void Map::setObject(unsigned row_pos, unsigned column_pos, Building* building){
 
 void Map::getSquareData(unsigned int row_pos, unsigned int column_pos)
 {
-    if(this->squares[row_pos][column_pos]->isSquareFree()){
+    if(this->squares[row_pos][column_pos]->isFreeSquare()){
         cout << "Soy un " << squares[row_pos][column_pos]->getSquareName() << " y me encuentro vacio" << endl;
         return;
     }
@@ -178,6 +196,6 @@ void Map::emptySquare(unsigned int row_pos, unsigned int column_pos)
     return;
 }
 
-string Map::getNamefromCoods(unsigned int row_pos, unsigned int column_pos){
+string Map::getNamefromCoords(unsigned int row_pos, unsigned int column_pos){
     return this->squares[row_pos][column_pos]->getBuilding()->getName();
 }

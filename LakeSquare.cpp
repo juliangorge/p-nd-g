@@ -22,7 +22,7 @@ bool LakeSquare::isTerrain()
 	return this->is_it_terrain;
 }
 
-bool LakeSquare::isSquareFree()
+bool LakeSquare::isFreeSquare()
 {
 	return (this->building == nullptr);
 }

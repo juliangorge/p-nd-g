@@ -20,7 +20,7 @@ void Andypolis:: showBuiltBuildings(){
     if(!this->building_quantity) cout << "No hay edificios construidos :(" << endl;
 
     for(int i = 0; i < this->building_quantity; i++){
-        if(this->buildings[i]->getQuantity() > 0) cout << "# " << this->buildings[i]->getName() << " (Construidos: " << this->buildings[i]->getQuantity() << ")" << endl;
+        if(this->buildings[i]->getQuantity() > 0) cout << "# " << this->buildings[i]->getName() << " (Construidos: " << this->buildings[i]->getQuantity() << "), Coordenadas: " << this->map->printCoordsByName(this->buildings[i]->getName()) << endl;
     }
 
     cout << endl << "======================" << endl << endl;
@@ -170,7 +170,7 @@ void Andypolis:: deleteBuildingByCoords()
     cout << "Escribe `Y` para confirmar: ";
     cin >> confirm;
     if(confirm == "Y" || confirm == "y"){
-        pos = checkIfBuildingExistsByName(this->map->getNamefromCoods(row_pos, column_pos));
+        pos = checkIfBuildingExistsByName(this->map->getNamefromCoords(row_pos, column_pos));
         this->buildings[pos]->decreaseQuantity();
         increaseMaterials(pos);
         this->map->emptySquare(row_pos, column_pos);

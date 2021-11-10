@@ -22,7 +22,7 @@ bool TerrainSquare::isTerrain()
 	return this->is_it_terrain;
 }
 
-bool TerrainSquare::isSquareFree()
+bool TerrainSquare::isFreeSquare()
 {
 	return (this->building == nullptr);
 }
@@ -50,7 +50,7 @@ void TerrainSquare::setBuilding(Building* building){
 }
 
 void TerrainSquare::changeObject(){
-	if(isSquareFree()){
+	if(isFreeSquare()){
 		this->type_square = 'T';
 	}else{
 		this->type_square = this->building->getBuildingChar();
