@@ -7,9 +7,9 @@ class Andypolis {
  - material_quantity : int 
  + showBuiltBuildings() : void
  + showBuildings() : void
- + areCoordsOk(row_pos : unsigned int &, column_pos : unsigned int & ) : bool
+ + areCoordsOk(row_pos : unsigned int &, column_pos : unsigned int &) : bool
  + newBuilding() : void
- + checkIfBuildingExistsByName(name : string) : int
+ + checkIfBuildingExistsByName(name : string) : int 
  + checkByMaterials(pos : int) : bool
  + checkByMax(pos : int) : bool
  + checkByMin(pos : int) : bool
@@ -23,17 +23,14 @@ class Andypolis {
  + colectResources() : void
  + rainResources() : void
  + addBuilding(building : Building*) : void
- + addBuildingFromLocations(name : string) : char
+ + addBuildingFromLocations(row_pos : unsigned int, column_pos : unsigned int, name : string) : char
  + addMaterial(material : Material*) : void
  + processBuildingsFile(filename : string) : void
  + processMaterialsFile(filename : string) : void
  + processLocationsFile(filename : string) : void
- + getBuildingQuantity() : int
- + getMaterialQuantity() : int
  + getBuildingByPos(pos : int) : Building* 
  + getMaterialByPos(pos : int) : Material* 
  + saveChanges(path_materials : string, path_buildings : string, path_locations : string) : void
- + setTotalBuilding(unsigned int quantity) : void
  + saveBuildingsChanges(filename : string) : void
  + saveMaterialsChanges(filename : string) : void
  + saveMapChanges(filename_locations : string) : void
@@ -48,6 +45,7 @@ class Building {
  - max : unsigned int 
  - building_char : char 
  - provide_materials : bool 
+ - materials_provided : unsigned int
  + increaseQuantity() : void
  + increaseQuantity(quantity : unsigned int) : void
  + decreaseQuantity() : void
@@ -60,14 +58,16 @@ class Interface {
  + selectedOption(city : Andypolis&, answer : int) : void
 }
 
-class abstract Square {
- # is_it_path : bool 
- # is_it_terrain : bool 
- # type_of_object : char 
- # object_name : string
- # square_type : char 
+abstract class Square {
+ # is_it_path : bool
+ # is_it_terrain : bool
  # square_name : string
- + changeObject(object_name : string, type_of_object : char) : void
+ # type_square : char
+ # building : Building*
+ # material : Material*
+ + isFreeSquare() : bool
+ + setBuilding(building : Building*) : void
+ + changeObject() : void
  + emptySquare() : void
 }
 
@@ -79,11 +79,38 @@ class Material {
  - name : string 
  - quantity : unsigned int 
  - material_char : char 
- + getName() : string 
- + getQuantity() : unsigned int 
  + increaseQuantity() : void
  + increaseQuantity(quantity : unsigned int) : void
  + decreaseQuantity() : void
  + decreaseQuantity(quantity : unsigned int) : void
- + getChar() : void
 }
+
+class Map {
+ - rows : unsigned int
+ - columns : unsigned int
+ - squares : Square***    
+ + readMap() : void
+ + loadMap(rows : unsigned int, columns : unsigned int, square_type : char) : void
+ + addCoords(row_pos : unsigned int &, column_pos : unsigned int &) : void
+ + checkCoords(row_pos : unsigned int, column_pos : unsigned int) : bool
+ + checkTerrainSquare(row_pos : unsigned int, column_pos : unsigned int) : bool
+ + checkTerrainBuilding(row_pos : unsigned int, column_pos : unsigned int) : bool
+ + showMap() : void
+ + printCoordsByName(name : string) : string
+ + showCoord(row_pos : unsigned int, column_pos : unsigned int) : void
+ + saveChanges(filename_locations : string, building_quantity_total : int) : void
+ + setObject(unsigned row_pos, unsigned column_pos, Building* building) : void
+ + getSquareData(row_pos : unsigned int, column_pos : unsigned int) : void
+ + emptySquare(row_pos : unsigned int, column_pos : unsigned int) : void
+ + getNamefromCoords(row_pos : unsigned int, column_pos : unsigned int) : string 
+}
+
+Andypolis <.. Map
+Andypolis <.. Building
+Andypolis <.. Material
+Map -> Square
+Square <|-- LakeSquare
+Square <|-- PathSquare
+Square <|-- TerrainSquare
+TerrainSquare "1" *-- "1" Building
+PathSquare "1" *-- "1" Material
