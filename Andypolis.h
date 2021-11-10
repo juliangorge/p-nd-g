@@ -2,8 +2,6 @@
 #define Andypolis_INCLUDED
 
 #include "Map.h"
-#include "Material.h"
-#include "Building.h"
 #include <string>
 
 using namespace std;
@@ -142,13 +140,13 @@ class Andypolis {
 
         void saveChanges(string path_materials, string path_buildings , string path_locations);
 
-        void setTotalBuilding(unsigned int quantity);
+        void setTotalBuilding();
 
         // PRE: Recibe una ruta de archivo valida.
         // POST: Guarda en dicho archivo todos los cambios producidos en el objeto Building,
         // Siguiendo el formato:
         // nombre_edificio piedra madera metal cantidad_construidos máxima_cantidad_permitidos.
-        void saveBuildingsChanges(string filename);
+        void deleteBuildings();
 
         // PRE: Recibe una ruta de archivo valida.
         // POST: Guarda en dicho archivo todos los cambios producidos en el objeto Material,
@@ -156,7 +154,7 @@ class Andypolis {
         // nombre_material cantidad_material.
         void saveMaterialsChanges(string filename);
 
-        void saveMapChanges(string filename_locations);
+        void saveLocationChanges(string filename_locations);
 
 };
 
