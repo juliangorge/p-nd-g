@@ -344,26 +344,29 @@ void Andypolis:: colectResources(){
 }
 
 void Andypolis:: rainResources(){
-    Square** path_squares = new Square*[this->map->getPathSquareQuantity()];
+    Square** path_squares = this->map->getPathSquaresPos();
 
-    int wood_quantity = rand() % MAX_WOOD + MIN_WOOD;
-    int stone_quantity = rand() % MAX_STONE + MIN_STONE;
-    int iron_quantity = rand() % MAX_IRON + MIN_IRON;
+    int wood_quantity = rand() % (MAX_WOOD-MIN_WOOD+1) + MIN_WOOD;
+    int stone_quantity = rand() % (MAX_STONE-MIN_STONE+1) + MIN_STONE;
+    int iron_quantity = rand() % (MAX_IRON-MIN_IRON+1) + MIN_IRON;
 
     for(int j = 0; j < this->material_quantity; j++){
         if(this->materials[j]->getName() == "madera"){
+        	cout << "Soltando madera: " << wood_quantity << endl;
             this->map->addMaterialToRandomPathSquares(path_squares, this->materials[j], wood_quantity);
         }
 
         if(this->materials[j]->getName() == "piedra"){
+        	cout << "Soltando piedra: " << stone_quantity << endl;
             this->map->addMaterialToRandomPathSquares(path_squares, this->materials[j], stone_quantity);
         }
 
         if(this->materials[j]->getName() == "metal"){
+        	cout << "Soltando metal: " << iron_quantity << endl;
             this->map->addMaterialToRandomPathSquares(path_squares, this->materials[j], iron_quantity);
-        }
-
+		}
     }
+    delete [] path_squares;
 }
 
 

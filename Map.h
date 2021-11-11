@@ -32,6 +32,7 @@ class Map
         string printCoordsByName(string name);
         void showCoord(unsigned int row_pos, unsigned int column_pos);
         unsigned int getPathSquareQuantity();
+        Square** getPathSquaresPos();
         void addMaterialToRandomPathSquares(Square** path_squares, Material* material, int material_quantity);
         void saveChanges(string filename_locations, int building_quantity_total);
         void setObject(unsigned int row_pos, unsigned int column_pos, Building* building);

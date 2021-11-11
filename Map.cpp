@@ -159,7 +159,9 @@ unsigned int Map:: getPathSquareQuantity(){
     return this->path_square_quantity;
 }
 
-void Map:: addMaterialToRandomPathSquares(Square** path_squares, Material* material, int material_quantity){
+Square** Map:: getPathSquaresPos()
+{
+	Square** path_squares = new Square*[this->getPathSquareQuantity()];
     int path_square_pos = 0;
     
     for (unsigned int i = 0; i < this->rows; i++){
@@ -170,9 +172,13 @@ void Map:: addMaterialToRandomPathSquares(Square** path_squares, Material* mater
             }
         }
     }
+    return path_squares;
+}
 
+void Map:: addMaterialToRandomPathSquares(Square** path_squares, Material* material, int material_quantity){
+   
     for (int i = 0; i < material_quantity; i++){
-        int random_path_square = rand() % (int) (this->path_square_quantity - 1) + 0;
+        int random_path_square = rand() % (int) (this->path_square_quantity);
         if(path_squares[random_path_square]->isFreeSquare()){
             path_squares[random_path_square]->setMaterial(material);
         }
