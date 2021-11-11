@@ -194,7 +194,7 @@ void Map::saveChanges(string filename_locations, int building_quantity_total){
     {
         for (unsigned int j = 0; j < this->columns; j++)
         {
-            if(!this->squares[i][j]->isFreeSquare()){
+            if(this->squares[i][j]->isTerrain() && !this->squares[i][j]->isFreeSquare()){
                 file_locations << this->squares[i][j]->getBuilding()->getName() << " (" << i << ", " << j << ")";
                 building_quantity_aux++;
                 if(building_quantity_aux < building_quantity_total) file_locations << '\n';
