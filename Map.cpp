@@ -138,7 +138,7 @@ string Map::printCoordsByName(string name){
     {
         for (unsigned int j = 0; j < this->columns; j++)
         {
-            if(!this->squares[i][j]->isFreeSquare()){
+            if(this->squares[i][j]->isTerrain() && !this->squares[i][j]->isFreeSquare()){
                 if(this->squares[i][j]->getBuilding()->getName() == name){
                     aux += "(" + to_string(i) + "," + to_string(j) + ") ";
                 }
@@ -223,8 +223,13 @@ void Map::getSquareData(unsigned int row_pos, unsigned int column_pos)
     if(this->squares[row_pos][column_pos]->isFreeSquare()){
         cout << "Soy un " << squares[row_pos][column_pos]->getSquareName() << " y me encuentro vacio" << endl;
         return;
+    }else{
+        if(this->squares[row_pos][column_pos]->isTerrain()){
+            cout << "Soy " << squares[row_pos][column_pos]->getBuilding()->getName() << " y estoy en las coordenadas " << "(" << row_pos << "," << column_pos << ")" << endl;
+        }else{
+            cout << "Soy " << squares[row_pos][column_pos]->getMaterial()->getName() << " y estoy en las coordenadas " << "(" << row_pos << "," << column_pos << ")" << endl;
+        }
     }
-    cout << "Soy " << squares[row_pos][column_pos]->getBuilding()->getName() << " y estoy en las coordenadas " << "(" << row_pos << "," << column_pos << ")" << endl;
     return;
 
 }
