@@ -189,7 +189,9 @@ void Andypolis:: newBuildingByName(){
     int pos;
     unsigned int row_pos, column_pos;
     cout << "Ingrese el nombre: ";
-    cin >> name;
+    getline(cin, name);
+    getline(cin, name);
+
     if((pos = checkIfBuildingExistsByName(name)) == -1){
         cout << "No se puede construir" << endl;
         return;

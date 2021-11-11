@@ -105,10 +105,9 @@ class Map {
  + getNamefromCoords(row_pos : unsigned int, column_pos : unsigned int) : string 
 }
 
+Andypolis <.. Interface
 Andypolis <.. Map
-Andypolis <.. Building
-Andypolis <.. Material
-Map -> Square
+Map "1" *-- "1..n" Square
 Square <|-- LakeSquare
 Square <|-- PathSquare
 Square <|-- TerrainSquare

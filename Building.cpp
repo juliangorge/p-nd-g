@@ -92,9 +92,6 @@ void Building:: getChar(){
         case 'p':
             this->building_char = 'P';
             this->provide_materials = false;
-        default:
-            this->building_char = 'B';
-            this->provide_materials = false;
     }
 }
 
