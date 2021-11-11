@@ -410,10 +410,9 @@ void Andypolis:: deleteBuildingByCoords(){
     if(confirm == "Y" || confirm == "y"){
         pos = checkIfBuildingExistsByName(this->map->getNamefromCoords(row_pos, column_pos));
 
-        this->map->getEmptySquare(row_pos, column_pos);
+        this->map->emptySquare(row_pos, column_pos);
         this->buildings[pos]->decreaseQuantity();
         increaseMaterials(pos);
-        this->map->emptySquare(row_pos, column_pos);
         cout << "Confirmado" << endl;        
     }else{
         cout << "Cancelado" << endl;

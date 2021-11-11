@@ -140,7 +140,7 @@ string Map::printCoordsByName(string name){
         {
             if(this->squares[i][j]->isTerrain() && !this->squares[i][j]->isFreeSquare()){
                 if(this->squares[i][j]->getBuilding()->getName() == name){
-                    aux += "(" + to_string(i) + "," + to_string(j) + ") ";
+                    aux += "(" + to_string(i + 1) + "," + to_string(j + 1) + ") ";
                 }
             }
         }
@@ -214,7 +214,7 @@ void Map::setObject(unsigned row_pos, unsigned column_pos, Building* building){
     this->squares[row_pos][column_pos]->setBuilding(building);
 }
 
-void Map::getEmptySquare(unsigned int row_pos, unsigned int column_pos){
+void Map::emptySquare(unsigned int row_pos, unsigned int column_pos){
     this->squares[row_pos][column_pos]->emptySquare();
 }
 
@@ -232,12 +232,6 @@ void Map::getSquareData(unsigned int row_pos, unsigned int column_pos)
     }
     return;
 
-}
-
-void Map::emptySquare(unsigned int row_pos, unsigned int column_pos)
-{
-    this->squares[row_pos][column_pos]->emptySquare();
-    return;
 }
 
 string Map::getNamefromCoords(unsigned int row_pos, unsigned int column_pos){

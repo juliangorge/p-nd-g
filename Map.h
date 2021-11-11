@@ -36,9 +36,8 @@ class Map
         void addMaterialToRandomPathSquares(Square** path_squares, Material* material, int material_quantity);
         void saveChanges(string filename_locations, int building_quantity_total);
         void setObject(unsigned int row_pos, unsigned int column_pos, Building* building);
-        void getEmptySquare(unsigned int row_pos, unsigned int column_pos);
-        void getSquareData(unsigned int row_pos, unsigned int column_pos);
         void emptySquare(unsigned int row_pos, unsigned int column_pos);
+        void getSquareData(unsigned int row_pos, unsigned int column_pos);
         string getNamefromCoords(unsigned int row_pos, unsigned int column_pos);
 };
 
