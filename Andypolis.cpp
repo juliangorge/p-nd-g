@@ -362,7 +362,7 @@ void Andypolis:: rainResources(){
         }
 
         if(this->materials[j]->getName() == "metal"){
-        	cout << "Soltando metal: " << iron_quantity << endl;
+            cout << "Soltando metal: " << iron_quantity << endl;
             this->map->addMaterialToRandomPathSquares(path_squares, this->materials[j], iron_quantity);
 		}
     }

@@ -44,7 +44,7 @@ void Material:: getChar(){
     switch(this->name[0]){
         case 'm':
 
-            if(this->name == "Metal"){
+            if(this->name == "metal"){
                 this->material_char = 'I';
             }else{
                 this->material_char = 'W';
